@@ -54,7 +54,7 @@ Route::get('servidores/{servidor}', function ($servidor){
 });
 
 Route::get('servidores/{servidor}/edit', function ($servidor){
-    return "vista editar";
+    return "vista editar cosas";
 });
 
 Route::put('servidores/{servidores}', function ($servidor){
