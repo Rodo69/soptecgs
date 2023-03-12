@@ -50,7 +50,7 @@ Route::get('servidores/create', function (){
 });
 
 Route::get('servidores/{servidor}', function ($servidor){
-    return "vista sucursal: $sucursal";
+    return "vista sucursal";
 });
 
 Route::get('servidores/{servidor}/edit', function ($servidor){
