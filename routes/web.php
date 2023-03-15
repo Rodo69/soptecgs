@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SucursalController;
+use Faker\Guesser\Name;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,11 +20,13 @@ Route::get('/', HomeController::class);
 
 Route::get('home', [HomeController::class, 'index']);
 
-Route::get('sucursales', [SucursalController::class, 'index']);
+Route::get('sucursales', [SucursalController::class, 'index'])->name('sucursales.index');
 
-Route::get('sucursales/create', [SucursalController::class, 'create']);
+Route::get('sucursales/create', [SucursalController::class, 'create'])->name('sucursales.create');
 
-Route::get('sucursales/{sucursal}', [SucursalController::class, 'show']);
+Route::post('sucursales', [SucursalController::class,'store'])->name('sucursales.store');
+
+Route::get('sucursales/{sucursal}', [SucursalController::class, 'show'])->name('sucursales.show');
 
 Route::get('sucursales/{sucursal}/edit', function ($sucursal){
     return "vista editar";

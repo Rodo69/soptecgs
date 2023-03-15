@@ -3,5 +3,5 @@
 @section('title', 'Sucursal')
 
 @section('micontent')
-    Vista Sucursal
+    Vista Show
 @endsection
