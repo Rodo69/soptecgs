@@ -21,9 +21,6 @@ return new class extends Migration
             $table->string('modelo');
             $table->string('serie');
             $table->string('placa');
-
-
-            
             $table->string('empleado_asig');
             $table->string('sucursal_asig'); 
             $table->string('unidad_asig');
