@@ -1,5 +1,3 @@
-<!-- ee -->
-
 <?php
 
 namespace App\Http\Controllers;
