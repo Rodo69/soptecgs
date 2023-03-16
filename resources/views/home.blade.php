@@ -5,5 +5,5 @@
 
 
 @section('micontent')
-    menu
+    Menu
 @endsection

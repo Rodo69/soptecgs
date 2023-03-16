@@ -9,7 +9,7 @@ class SucursalController extends Controller
 {
     public function index()
     {
-        $sucursal = Sucursal::orderBy('id', 'desc')->paginate(9);
+        //$sucursal = Sucursal::orderBy('id', 'desc')->paginate(9);
         return view('sucursales.index', compact('sucursales'));
     }
 

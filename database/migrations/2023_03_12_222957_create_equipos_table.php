@@ -13,7 +13,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('equipos', function (Blueprint $table) {
             $table->id();
@@ -22,21 +22,23 @@ return new class extends Migration
             $table->string('modelo');
             $table->string('serie');
             $table->string('placa');
-            $table->string('empleado_asig');
-            $table->string('sucursal_asig'); 
-            $table->string('unidad_asig');
+            $table->unsignedBigInteger('empleado_asig');
+            $table->unsignedBigInteger('sucursal_asig'); 
+            $table->unsignedBigInteger('unidad_asig');
             $table->string('nombre_equipo');
             $table->string('foto_equipo');           
             $table->timestamps();
+
+            $table->foreign('empleado_asig')->references('id')->on('empleados')->onDelete('cascade');
+            $table->foreign('sucursal_asig')->references('id')->on('sucursales')->onDelete('cascade');
+            $table->foreign('unidad_asig')->references('id')->on('sucursales')->onDelete('cascade');
         });
     }
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('equipos');
     }
