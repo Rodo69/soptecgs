@@ -1,6 +1,3 @@
-<<<<<<< Updated upstream
-=======
-h
 
 @extends('layouts.plantilla')
 
@@ -23,4 +20,3 @@ h
 @section('contentcalendario')
   info agenda  
 @endsection
->>>>>>> Stashed changes
