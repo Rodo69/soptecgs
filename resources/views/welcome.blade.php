@@ -8,7 +8,12 @@
 {{-- 3 proye --}}
 >>>>>>> Stashed changes
 
+<<<<<<< Updated upstream
         <title>Laravel</title>
+=======
+
+@extends('layouts.plantilla')
+>>>>>>> Stashed changes
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
