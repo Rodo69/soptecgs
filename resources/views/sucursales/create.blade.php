@@ -1,6 +1,6 @@
 @extends('layouts.principal')
 
-@section('title', 'alta Sucursal')
+@section('title', 'Alta Sucursal')
 
 @section('micontent')
 <div class="py-8 bg-gray-100">
