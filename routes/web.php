@@ -63,3 +63,4 @@ Route::put('servidores/{servidores}', function ($servidor){
 Route::delete('servidores/{servidores}', function ($servidor){
     return "vista eliminar";
 });
+// RUTAS INVENTARIO
