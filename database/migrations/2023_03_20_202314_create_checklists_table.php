@@ -11,13 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('categoria', function (Blueprint $table) {
+        Schema::create('checklists', function (Blueprint $table) {
             $table->id();
-            
-            $table->string('nombre');
+            $table->string('sucursal');
+            $table->string('numero_sucursal');
+            $table->string('gerente_tienda'); 
+            $table->string('foto_antes'); 
+            $table->string('foto_despues');                 
             $table->timestamps();
         });
-
     }
 
     /**
@@ -25,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('categoria');
+        Schema::dropIfExists('checklists');
     }
 };

@@ -11,13 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('checklist', function (Blueprint $table) {
+        Schema::create('equiposbajas', function (Blueprint $table) {
             $table->id();
-            $table->string('sucursal');
-            $table->string('numero_sucursal');
-            $table->string('gerente_tienda'); 
-            $table->string('foto_antes'); 
-            $table->string('foto_despues');                 
+            $table->string('tipo');
+            $table->string('placa');
+            $table->string('serie');
+            $table->string('foto_equipo');
+            $table->string('modelo');     
+            $table->string('ing_cargo');
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('checklist');
+        Schema::dropIfExists('equiposbajas');
     }
 };
