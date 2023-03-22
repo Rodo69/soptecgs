@@ -3,10 +3,10 @@
 
 @section('title', 'Grupo Salinas')
 
-@section('titleinventario', 'Registro')
+@section('titleinventario', 'InventarioSG')
 
 @section('content1')
-  info 
+  Ingresar InventarioGS
 @endsection
 
 @section('titlecheck', 'Checklist')

@@ -4,6 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SucursalController;
 use Faker\Guesser\Name;
+//PARA FUNCIONAR CON RUTAS DE EMPLEADO
+use App\Http\Controllers\EmpleadosController;
+use App\Models\empleados;
+use GuzzleHttp\Promise\Create;
+//TERMINA AQUI
 
 /*
 |--------------------------------------------------------------------------
@@ -64,3 +69,4 @@ Route::delete('servidores/{servidores}', function ($servidor){
     return "vista eliminar";
 });
 // RUTAS INVENTARIO
+Route::resource('empleado', EmpleadosController::class);
