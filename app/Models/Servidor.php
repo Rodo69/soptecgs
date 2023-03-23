@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Sucursal extends Model
+class Servidor extends Model
 {
     use HasFactory;
 
-    public function servidores()
+    public function sucursal()
     {
-        return $this->hasMany('App\Models\Servidor', 'sucursal');
+        return $this->belongsTo('App\Models\Sucursal');
     }
 }
