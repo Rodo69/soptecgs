@@ -73,3 +73,4 @@ Route::resource('empleado', EmpleadosController::class);
 // RUTAS INVENTARIO EQUIPOS
 Route::resource('equipos', EquiposController::class);
 // RUTAS INVENTARIO SUCURSALES
+Route::resource('sucursales', SucursalesController::class);
