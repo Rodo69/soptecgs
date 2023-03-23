@@ -6,6 +6,8 @@ use App\Http\Controllers\SucursalController;
 use Faker\Guesser\Name;
 //PARA FUNCIONAR CON RUTAS DE EMPLEADO
 use App\Http\Controllers\EmpleadosController;
+use App\Http\Controllers\EquiposController;
+use App\Http\Controllers\SucursalesController;
 use App\Models\empleados;
 use GuzzleHttp\Promise\Create;
 //TERMINA AQUI
