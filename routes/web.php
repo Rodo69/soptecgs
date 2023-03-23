@@ -68,5 +68,8 @@ Route::put('servidores/{servidores}', function ($servidor){
 Route::delete('servidores/{servidores}', function ($servidor){
     return "vista eliminar";
 });
-// RUTAS INVENTARIO
+// RUTAS INVENTARIO EMPLEADO
 Route::resource('empleado', EmpleadosController::class);
+// RUTAS INVENTARIO EQUIPOS
+Route::resource('equipos', EquiposController::class);
+// RUTAS INVENTARIO SUCURSALES
