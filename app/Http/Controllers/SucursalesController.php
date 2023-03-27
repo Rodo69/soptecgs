@@ -30,6 +30,25 @@ class SucursalesController extends Controller
      */
     public function store(Request $request)
     {
+        //validar datos
+        
+        $campos=[
+            'tipo'=>'required|string|max:100',
+            'marca'=>'required|string|max:100',
+            'modelo'=>'required|string|max:100',
+            'serie'=>'required|string|max:100',
+            'placa'=>'required|string|max:100',
+            'empleado_asig'=>'required|string|max:100',
+            'sucursal_asig'=>'required|string|max:100',
+            'unidad_asig'=>'required|string|max:100',
+            'nombre_equipo'=>'required|string|max:100',
+            'foto_equipo'=>'required|max:10000|mimes:jpeg,png,jpg',
+        ];
+        $mensaje=[
+            'required'=>'El campo :attribute es requerido',
+            'foto_equipo.required'=>'La foto es requerida'
+        ];
+        $this->validate($request,$campos,$mensaje);
         $datosSucursal= request()->except('_token');
         if($request->hasFile('imagen')){
             $datosSucursal['imagen']=$request->file('imagen')->store('uploads','public');
@@ -91,7 +110,7 @@ class SucursalesController extends Controller
         Sucursales::where('id','=',$id)->update($datosSucursal);
         $sucursal=Sucursales::FindOrFail($id);
         //return view('empleado.edit',compact('empleado'));
-        return redirect('sucursales')->with('mensaje','Empleado modificado');
+        return redirect('sucursales')->with('mensaje','Sucursal modificado');
     }
 
     /**
@@ -104,6 +123,6 @@ class SucursalesController extends Controller
         if(Storage::delete('public/'.$sucursal->imagen)){
             Sucursales::destroy($id);
         }
-        return redirect('sucursales')->with('mensaje','Empleado Borrado');
+        return redirect('sucursales')->with('mensaje','Sucursal Eliminada');
     }
 }

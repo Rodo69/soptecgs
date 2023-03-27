@@ -1,3 +1,5 @@
+@extends('layouts.appinventario')
+@section('content')
 <div class="container">
     <form action="{{ url('/equipos/' . $equipo->id) }}" method="post" enctype="multipart/form-data">
         @csrf
@@ -5,3 +7,4 @@
         @include('equipos.form', ['modo' => 'Editar']);
     </form>
 </div>
+@endsection

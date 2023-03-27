@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    @extends('layouts.appinventario')
+    @section('content')
+    @if(Session::has('mensaje'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{Session::get('mensaje')}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    @endif
+    <div class="container">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -55,5 +66,8 @@
         @endforeach
     </tbody>
 </table>
+{!!$equipos->Links()!!}
+</div>
+@endsection
 </body>
 </html>

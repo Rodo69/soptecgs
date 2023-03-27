@@ -29,6 +29,22 @@ class EmpleadosController extends Controller
      */
     public function store(Request $request)
     {
+        //validar datos
+        
+        $campos=[
+            'nombre_colaborador'=>'required|string|max:100',
+            'apellido_p'=>'required|string|max:100',
+            'apellido_m'=>'required|string|max:100',
+            'telefono'=>'required|string|max:100',
+            'numero_colaborador'=>'required|string|max:100',
+            'sucursal_asignada'=>'required|string|max:100',
+            'unidad_asignada'=>'required|string|max:100',
+            'puesto'=>'required|string|max:100',
+        ];
+        $mensaje=[
+            'required'=>'El campo :attribute es requerido',
+        ];
+        $this->validate($request,$campos,$mensaje);
         $datosEmpleado= request()->except('_token');
         Empleados::insert($datosEmpleado);
         return redirect('empleado')->with('mensaje','Empleado Agregado con exito');
@@ -49,13 +65,28 @@ class EmpleadosController extends Controller
     {
         $empleado=Empleados::FindOrFail($id);
         return view('empleado.edit',compact('empleado'));
+        
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,$id)
     {
+        $campos=[
+            'nombre_colaborador'=>'required|string|max:100',
+            'apellido_p'=>'required|string|max:100',
+            'apellido_m'=>'required|string|max:100',
+            'telefono'=>'required|string|max:100',
+            'numero_colaborador'=>'required|string|max:100',
+            'sucursal_asignada'=>'required|string|max:100',
+            'unidad_asignada'=>'required|string|max:100',
+            'puesto'=>'required|string|max:100',
+        ];
+        $mensaje=[
+            'required'=>'El campo :attribute es requerido',
+        ];
+        $this->validate($request,$campos,$mensaje);
         $datosEmpleado= request()->except(['_token','_method']);
         Empleados::where('id','=',$id)->update($datosEmpleado);
         $empleado=Empleados::FindOrFail($id);

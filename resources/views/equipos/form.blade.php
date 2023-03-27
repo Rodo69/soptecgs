@@ -1,6 +1,13 @@
 <h1>{{ $modo }} Equipos</h1>
-
-
+@if (count($errors) > 0)
+    <div class="alert alert-danger" role="alert">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 <div class="form-group">
     <label for="Nombre">Tipo</label>
     <input type="text" class="form-control" name="tipo"
@@ -10,14 +17,14 @@
 <div class="form-group">
     <label for="Nombre">Marca</label>
     <input type="text" class="form-control" name="marca"
-        value="{{ isset($equipo->marca) ? $equipo->marca : old('ApellidoPaterno') }}"
+        value="{{ isset($equipo->marca) ? $equipo->marca : old('marca') }}"
         id="marca">
     <br>
 </div>
 <div class="form-group">
     <label for="Nombre">Modelo</label>
     <input type="text" class="form-control" name="modelo"
-        value="{{ isset($equipo->modelo) ? $equipo->modelo : old('ApellidoMaterno') }}"
+        value="{{ isset($equipo->modelo) ? $equipo->modelo : old('modelo') }}"
         id="modelo">
     <br>
 </div>

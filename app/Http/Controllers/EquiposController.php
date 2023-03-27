@@ -30,12 +30,31 @@ class EquiposController extends Controller
      */
     public function store(Request $request)
     {
+        //validar datos
+        
+        $campos=[
+            'tipo'=>'required|string|max:100',
+            'marca'=>'required|string|max:100',
+            'modelo'=>'required|string|max:100',
+            'serie'=>'required|string|max:100',
+            'placa'=>'required|string|max:100',
+            'empleado_asig'=>'required|string|max:100',
+            'sucursal_asig'=>'required|string|max:100',
+            'unidad_asig'=>'required|string|max:100',
+            'nombre_equipo'=>'required|string|max:100',
+            'foto_equipo'=>'required|max:10000|mimes:jpeg,png,jpg',
+        ];
+        $mensaje=[
+            'required'=>'El campo :attribute es requerido',
+            'foto_equipo.required'=>'La foto es requerida'
+        ];
+        $this->validate($request,$campos,$mensaje);
         $datosEquipo= request()->except('_token');
         if($request->hasFile('foto_equipo')){
             $datosEquipo['foto_equipo']=$request->file('foto_equipo')->store('uploads','public');
         }
         Equipos::insert($datosEquipo);
-        return redirect('equipos')->with('mensaje','Empleado Agregado con exito');
+        return redirect('equipos')->with('mensaje','Equipo Agregado con exito');
     }
 
     /**
@@ -91,7 +110,7 @@ class EquiposController extends Controller
         Equipos::where('id','=',$id)->update($datosEquipo);
         $equipo=Equipos::FindOrFail($id);
         //return view('empleado.edit',compact('empleado'));
-        return redirect('equipos')->with('mensaje','Empleado modificado');
+        return redirect('equipos')->with('mensaje','Equipo modificado');
     }
 
     /**
@@ -104,6 +123,6 @@ class EquiposController extends Controller
         if(Storage::delete('public/'.$equipo->foto_equipo)){
             Equipos::destroy($id);
         }
-        return redirect('equipos')->with('mensaje','Empleado Borrado');
+        return redirect('equipos')->with('mensaje','Equipo Borrado');
     }
 }

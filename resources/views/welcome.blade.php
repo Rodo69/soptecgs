@@ -1,5 +1,5 @@
 
-@extends('layouts.plantilla')
+  @extends('layouts.plantilla')
 
 @section('title', 'Grupo Salinas')
 
@@ -20,3 +20,6 @@
 @section('contentcalendario')
   info agenda  
 @endsection
+
+
+

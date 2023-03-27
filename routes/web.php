@@ -70,9 +70,24 @@ Route::put('servidores/{servidores}', function ($servidor){
 Route::delete('servidores/{servidores}', function ($servidor){
     return "vista eliminar";
 });
-// RUTAS INVENTARIO EMPLEADO
-Route::resource('empleado', EmpleadosController::class);
-// RUTAS INVENTARIO EQUIPOS
-Route::resource('equipos', EquiposController::class);
-// RUTAS INVENTARIO SUCURSALES
-Route::resource('sucursales', SucursalesController::class);
+
+
+
+Route::get('/', function () {
+    return view('welcome');
+});
+Route::get('/empleado/create',[EmpleadosController::class,'create']);
+Route::resource('empleado', EmpleadosController::class)->middleware('auth');
+
+Route::get('/equipos/create',[EquiposController::class,'create']);
+Route::resource('equipos', EquiposController::class)->middleware('auth');
+
+Route::get('/sucursales/create',[SucursalesController::class,'create']);
+Route::resource('sucursales', SucursalesController::class)->middleware('auth');
+Auth::routes();
+////AQUI DEFINIMOS LA RUTA A LA CUAL NOS CARGARA LA PAGINA
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+Route::group(['middleware' => 'auth'],function(){
+    Route::get('/', [HomeController::class, 'index'])->name('home');
+});
