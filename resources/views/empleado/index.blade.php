@@ -46,8 +46,8 @@
                         <td>{{ $empleado->apellido_m }}</td>
                         <td>{{ $empleado->telefono }}</td>
                         <td>{{ $empleado->numero_colaborador }}</td>
-                        <td>{{ $empleado->sucursal_asignada }}</td>
-                        <td>{{ $empleado->unidad_asignada }}</td>
+                        <td>{{ $empleado->sucursales->nombre }}</td>
+                        <td>{{ $empleado->categoria->nombre }}</td>
                         <td>{{ $empleado->puesto }}</td>
                         <td>
                             <a href="{{ url('/empleado/' . $empleado->id . '/edit') }}" class="btn btn-warning">Editar</a> |

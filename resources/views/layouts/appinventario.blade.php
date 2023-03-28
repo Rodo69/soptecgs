@@ -23,7 +23,8 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.titulo', 'Inicio') }}
+                    <img src="imagenes/gs.png" style="width: 30%">
+                    {{-- {{ config('app.titulo', 'Inicio') }} --}}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"

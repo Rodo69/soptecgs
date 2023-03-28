@@ -8,4 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 class equipos extends Model
 {
     use HasFactory;
+
+    public function sucursales()
+    {
+        return $this->belongsTo(Sucursales::class,'sucursal_asig');
+        
+    }
+    public function categoria()
+    {
+        return $this->belongsTo(Categoria::class,'unidad_asig');
+    }
+
+    public function empleados()
+    {
+        return $this->belongsTo(Empleados::class,'empleado_asig');
+    }
+
 }

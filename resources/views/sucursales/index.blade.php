@@ -31,9 +31,9 @@
             <th>Telefono</th>
             <th>Gerente</th>
             <th>Telefono</th>
-            <th>#1</th>
-            <th>#2</th>
-            <th>#3</th>
+            <th>Unidad</th>
+            <th>Unidad</th>
+            <th>Unidad</th>
             <th>Acciones</th>
         </tr>
     </thead>
@@ -50,9 +50,9 @@
             <td>{{$sucursal->telefono_ing}}</td>
             <td>{{$sucursal->gerente_tienda}}</td>
             <td>{{$sucursal->telefono_gerente}}</td>
-            <td>{{$sucursal->banco_azteca}}</td>
-            <td>{{$sucursal->presta_prenda}}</td>
-            <td>{{$sucursal->comercio}}</td>
+            <td>{{$sucursal->categoria->nombre}}</td>
+            <td>{{$sucursal->categoria1->nombre}}</td>
+            <td>{{$sucursal->categoria2->nombre}}</td>
             <td>
             <a href="{{url('/sucursales/'.$sucursal->id.'/edit')}}" class="btn btn-warning">Editar</a>    | 
 

@@ -49,9 +49,9 @@
             <td>{{$equipo->modelo}}</td>
             <td>{{$equipo->serie}}</td>
             <td>{{$equipo->placa}}</td>
-            <td>{{$equipo->empleado_asig}}</td>
-            <td>{{$equipo->sucursal_asig}}</td>
-            <td>{{$equipo->unidad_asig}}</td>
+            <td>{{$equipo->empleados->nombre_colaborador}}</td>
+            <td>{{$equipo->sucursales->nombre}}</td>
+            <td>{{$equipo->categoria->nombre}}</td>
             <td>{{$equipo->nombre_equipo}}</td>
             <td>
             <a href="{{url('/equipos/'.$equipo->id.'/edit')}}" class="btn btn-warning">Editar</a>    | 
