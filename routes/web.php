@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ServidorController;
+use App\Http\Controllers\ServidoresController;
 use App\Http\Controllers\SucursalController;
 use Faker\Guesser\Name;
 
@@ -27,7 +27,7 @@ Route::resource('sucursales', SucursalController::class);
 
 //Rutas Servidores
 
-Route::resource('servidores', ServidorController::class);
+Route::resource('servidores', ServidoresController::class);
 
 // Route::get('sucursales', [SucursalController::class, 'index'])->name('sucursales.index');
 

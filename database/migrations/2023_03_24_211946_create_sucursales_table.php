@@ -8,8 +8,10 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
+     *
+     * @return void
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('sucursales', function (Blueprint $table) {
             $table->id();
@@ -20,6 +22,7 @@ return new class extends Migration
             $table->string('gerente_tienda');
             $table->string('telefono_gerente');
             $table->string('imagen');
+            $table->timestamps();
             
             $table->unsignedBigInteger('banco_azteca');
             $table->unsignedBigInteger('presta_prenda');
@@ -31,11 +34,12 @@ return new class extends Migration
         });
     }
 
-    
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('sucursales');
     }

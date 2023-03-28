@@ -8,10 +8,12 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
+     *
+     * @return void
      */
-    public function up(): void
+    public function up()
     {
-        Schema::create('checklist', function (Blueprint $table) {
+        Schema::create('checklists', function (Blueprint $table) {
             $table->id();
             $table->string('sucursal');
             $table->string('numero_sucursal');
@@ -22,12 +24,13 @@ return new class extends Migration
         });
     }
 
-    
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
-    public function down(): void
+    public function down()
     {
-        Schema::dropIfExists('checklist');
+        Schema::dropIfExists('checklists');
     }
 };

@@ -9,8 +9,8 @@ class Sucursal extends Model
 {
     use HasFactory;
 
-    public function servidores()
-    {
-        return $this->hasMany('App\Models\Servidor', 'sucursal');
-    }
+    // public function servidores()
+    // {
+    //     return $this->hasMany('App\Models\Servidor', 'sucursal');
+    // }
 }
