@@ -68,7 +68,6 @@
     </a>
 @endsection
 
-
 @section('micontent')
 @yield('urlSer')
 @yield('urlSu')

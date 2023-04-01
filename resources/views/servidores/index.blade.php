@@ -9,7 +9,7 @@
 <a href="home" class="btn btn-outline-primary">Regresar</a>
 
 <table class="table">
-    {{-- <caption>{{$servidores->links()}} </caption> --}}
+    <caption>{{$servidores->links()}} </caption>
     <thead class="thead-dark">
       <tr>
         <th scope="col">#</th>
@@ -27,7 +27,7 @@
 <tr>
   <td><a href="{{route('servidores.show', $servidor->id)}}">{{$servidor->id}}</td>
   <td>{{$servidor->nombre}}</td>
-  <td>{{$servidor->sucursalasig}}</td>
+  <td>{{$servidor->sucursales->nombre}}</td>
   <td>{{$servidor->ip}}</td>
   <td>{{$servidor->mascara}}</td>
   <td>{{$servidor->gateway}}</td>
