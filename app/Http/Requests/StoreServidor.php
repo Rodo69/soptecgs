@@ -46,7 +46,6 @@ class StoreServidor extends FormRequest
             'dns.required'=> 'OBLIGATORIO',
             'imagen.required'=> 'No olvides que la imagen del servidor tambien es importante',
             'status.required'=> 'Activo O Inactivo'
-           // 'categoria.required'=> 'Ingrsa la categoria del curso'
         ];
     }
 }

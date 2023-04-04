@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActividadesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ServidoresController;
@@ -28,6 +29,8 @@ Route::resource('sucursales', SucursalController::class);
 //Rutas Servidores
 
 Route::resource('servidores', ServidoresController::class);
+
+Route::resource('actividades', ActividadesController::class);
 
 // Route::get('sucursales', [SucursalController::class, 'index'])->name('sucursales.index');
 

@@ -97,7 +97,18 @@ class ServidoresController extends Controller
      */
     public function update(StoreServidor $request, $id)
     {
+/*         if($request->hasFile('imagen')){
+            $servidor=servidores::FindOrFail($id);
+           Storage::delete('public/'.$servidor->imagen);
+            $servidor['imagen']=$request->file('imagen')->store('uploads','public');
+        }
+        
+        $servidor=servidores::FindOrFail($id);
+        //return view('empleado.edit',compact('empleado'));
+        return redirect()->route('servidores.index', $id); */
+
         $imagen = $request->file('imagen')->store('public/imagenes'); //metodo
+
         //$servidor = servidores::create($request->all());
 
         $servidor=servidores::findOrFail($id);
@@ -107,13 +118,13 @@ class ServidoresController extends Controller
              $servidor->mascara = $request->mascara;
              $servidor->gateway = $request->gateway;
              $servidor->dns = $request->dns;
-             $imagen = Storage::url($imagen);
+             $servidor->imagen = $imagen = Storage::url($imagen);
              $servidor->status = $request->status;
 
         $servidor->save();  
 
         $servidor->update($request->all());
-        return redirect()->route('servidores.index');
+        return redirect()->route('servidores.index', $id);
     }
     
 
