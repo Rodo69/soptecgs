@@ -82,8 +82,10 @@ class ServidoresController extends Controller
      */
     public function edit($id)
     {
+        $sucursales=sucursales::all();
+        //return view('servidores.edit', compact('sucursales'));
         $servidor=servidores::FindOrFail($id);
-        return view('servidores.edit',compact('servidor'));
+        return view('servidores.edit',compact('servidor','sucursales'));
     }
 
     /**

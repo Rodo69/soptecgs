@@ -14,7 +14,7 @@ class servidores extends Model
 
     public function sucursales()
      {
-         return $this->belongsTo(Sucursales::class, 'sucursalasig');
+         return $this->belongsTo(sucursales::class, 'sucursalasig');
      }
 
 }

@@ -42,15 +42,11 @@
                     <label class="inline-block text-sm font-medium text-gray-700"
                         for=""> Sucursal asignada </label>
 
-                    <input
-                        class="block w-full h-10 transition duration-75 border-gray-300 rounded-lg shadow-sm focus:ring-1 focus:ring-inset focus:ring-blue-600 focus:border-blue-600"
-                        id="direccsucursalasigion"
-                        type="text" name="sucursalasig" value="{{old('sucursalasig',$servidor->sucursalasig)}}">
-
-                        <select name="sucursalasig" class="block w-full h-10 transition duration-75 border-gray-300 rounded-lg shadow-sm focus:ring-1 focus:ring-inset focus:ring-blue-600 focus:border-blue-600">
-                            <option value="">selecciona la sucursal </option>
-                            <option value="{{old('sucursal', $sucursal->id)}}">{{old('nombre', $sucursal->nombre)}}</option>
-
+                        <select name="sucursalasig"  class="block w-full h-10 transition duration-75 border-gray-300 rounded-lg shadow-sm focus:ring-1 focus:ring-inset focus:ring-blue-600 focus:border-blue-600">
+                            <option value="">{{old('sucursalasig',$servidor->sucursales->nombre)}}</option>
+                            @foreach ($sucursales as $sucursal)
+                                <option value="{{$sucursal->id}}">{{$sucursal->nombre}}</option>
+                            @endforeach
                         </select>
 
                         @error('sucursalasig')
@@ -148,13 +144,11 @@
                         class="block w-full h-10 transition duration-75 border-gray-300 rounded-lg shadow-sm focus:ring-1 focus:ring-inset focus:ring-blue-600 focus:border-blue-600"
                         id="status"
                         type="text" name="status" value="{{old('status', $servidor->status)}}">
-
                         @error('status')
                         <br>
                         <small class="text-danger">*{{$message}}</small>
                         <br>
-                        @enderror
-
+                        @enderror   
             </div>
 
             <footer class="flex items-center justify-end px-4 py-2 space-x-4">

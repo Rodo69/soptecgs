@@ -29,6 +29,11 @@
                         id="nombre"
                         type="text" name="nombre" value="{{old('nombre')}}">
 
+                        @error('nombre')
+                        <br>
+                        <small class="text-danger">*{{$message}}</small>
+                        <br>
+                        @enderror
                 </div>
 
                 <div class="col-span-2 space-y-2 md:col-span-1">
@@ -41,6 +46,11 @@
                                 <option value="{{$sucursal->id}}">{{$sucursal->nombre}}</option>
                             @endforeach
                         </select>
+                        @error('sucursalasig')
+                        <br>
+                        <small class="text-danger">*{{$message}}</small>
+                        <br>
+                        @enderror
                 </div>
 
                 <div class="col-span-2 space-y-2 md:col-span-1">
@@ -50,6 +60,11 @@
                     <input
                         class="block w-full transition duration-75 border-gray-300 rounded-lg shadow-sm focus:border-blue-600 focus:ring-1 focus:ring-inset focus:ring-blue-600"
                         id="ip" name="ip">{{old('ip')}}
+                        @error('ip')
+                        <br>
+                        <small class="text-danger">*{{$message}}</small>
+                        <br>
+                        @enderror
                 </div>
 
                  <div class="col-span-2 space-y-2 md:col-span-1">
@@ -60,7 +75,11 @@
                         class="block w-full h-10 transition duration-75 border-gray-300 rounded-lg shadow-sm focus:ring-1 focus:ring-inset focus:ring-blue-600 focus:border-blue-600"
                         id="mascara"
                         type="text" name="mascara" value="{{old('mascara')}}">
-
+                        @error('mascara')
+                        <br>
+                        <small class="text-danger">*{{$message}}</small>
+                        <br>
+                        @enderror
                 </div>
 
                 <div class="col-span-2 space-y-2 md:col-span-1">
@@ -71,7 +90,12 @@
                         class="block w-full h-10 transition duration-75 border-gray-300 rounded-lg shadow-sm focus:ring-1 focus:ring-inset focus:ring-blue-600 focus:border-blue-600"
                         id="gateway"
                         type="text" name="gateway" value="{{old('gateway')}}">
-                </div>
+                        @error('gateway')
+                        <br>
+                        <small class="text-danger">*{{$message}}</small>
+                        <br>
+                        @enderror
+                    </div>
 
                 <div class="col-span-2 space-y-2 md:col-span-1">
                     <label class="inline-block text-sm font-medium text-gray-700"
@@ -81,6 +105,12 @@
                         class="block w-full h-10 transition duration-75 border-gray-300 rounded-lg shadow-sm focus:ring-1 focus:ring-inset focus:ring-blue-600 focus:border-blue-600"
                         id="dns"
                         type="text" name="dns" value="{{old('dns')}}">
+                        
+                        @error('dns')
+                        <br>
+                        <small class="text-danger">*{{$message}}</small>
+                        <br>
+                        @enderror
                 </div>
 
                 <div class="col-span-2 space-y-2 md:col-span-1">
@@ -90,7 +120,13 @@
                     <input
                         class="block w-full h-10 transition duration-75 border-gray-300 rounded-lg shadow-sm focus:ring-1 focus:ring-inset focus:ring-blue-600 focus:border-blue-600"
                         type="file" name="imagen" accept="image/*" value="{{old('imagen')}}">
-                </div>
+               
+                        @error('imagen')
+                        <br>
+                        <small class="text-danger">*{{$message}}</small>
+                        <br>
+                        @enderror                    
+                    </div>
 
                 <div class="col-span-2 space-y-2 md:col-span-1">
                     <label class="inline-block text-sm font-medium text-gray-700"
@@ -101,6 +137,11 @@
                         id="status"
                         type="text" name="status" value="{{old('status')}}">
 
+                        @error('status')
+                        <br>
+                        <small class="text-danger">*{{$message}}</small>
+                        <br>
+                        @enderror
             </div>
 
             <footer class="flex items-center justify-end px-4 py-2 space-x-4">
