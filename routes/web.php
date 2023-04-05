@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActividadesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SucursalController;
@@ -10,6 +11,8 @@ use App\Http\Controllers\EquiposController;
 use App\Http\Controllers\SucursalesController;
 use App\Models\empleados;
 use GuzzleHttp\Promise\Create;
+use Illuminate\Support\Facades\Auth;
+
 //TERMINA AQUI
 
 /*
@@ -27,52 +30,15 @@ Route::get('/', HomeController::class);
 
 Route::get('home', [HomeController::class, 'index']);
 
-Route::get('sucursales', [SucursalController::class, 'index'])->name('sucursales.index');
+//Rutas sucursales
 
-Route::get('sucursales/create', [SucursalController::class, 'create'])->name('sucursales.create');
+Route::resource('sucursales', SucursalController::class);
 
-Route::post('sucursales', [SucursalController::class,'store'])->name('sucursales.store');
+//Rutas Servidores
 
-Route::get('sucursales/{sucursal}', [SucursalController::class, 'show'])->name('sucursales.show');
+Route::resource('servidores', ServidoresController::class);
 
-<<<<<<< Updated upstream
-Route::get('sucursales/{sucursal}/edit', function ($sucursal){
-    return "vista editar";
-});
-
-Route::put('sucursales/{sucursal}', function ($sucursal){
-    return "vista acatualizar";
-});
-
-Route::delete('sucursales/{sucursal}', function (){
-  
-});
-
-Route::get('servidores', function (){
-    return "vista sucursal";
-});
-
-Route::get('servidores/create', function (){
-    return "vista para crear una sucursal";
-});
-
-Route::get('servidores/{servidor}', function ($servidor){
-    return "vista sucursal:" ;
-});
-
-Route::get('servidores/{servidor}/edit', function ($servidor){
-    return "vista editar";
-});
-
-Route::put('servidores/{servidores}', function ($servidor){
-    return "vista acatualizar";
-});
-
-Route::delete('servidores/{servidores}', function ($servidor){
-    return "vista eliminar";
-});
-
-
+Route::resource('actividades', ActividadesController::class);
 
 Route::get('/', function () {
     return view('welcome');
@@ -92,6 +58,4 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::group(['middleware' => 'auth'],function(){
     Route::get('/', [HomeController::class, 'index'])->name('home');
 });
-=======
-Route::resource('actividades', ActividadesController::class);
->>>>>>> Stashed changes
+

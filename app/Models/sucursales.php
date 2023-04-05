@@ -9,7 +9,6 @@ class sucursales extends Model
 {
     use HasFactory;
 
-<<<<<<< Updated upstream
     public function categoria()
     {
         return $this->belongsTo(categoria::class,'banco_azteca');
@@ -23,10 +22,8 @@ class sucursales extends Model
         return $this->belongsTo(categoria::class,'comercio');
     }
 
-=======
      public function servidores()
      {
         return $this->hasMany('App\Models\Servidor', 'sucursal');
      }
->>>>>>> Stashed changes
 }
