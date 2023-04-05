@@ -2,7 +2,13 @@
 
 namespace App\Http\Controllers;
 
+<<<<<<< Updated upstream
 use App\Models\servidores;
+=======
+use App\Http\Requests\StoreServidor;
+use App\Models\servidores;
+use App\Models\sucursales;
+>>>>>>> Stashed changes
 use Illuminate\Http\Request;
 
 class ServidoresController extends Controller

@@ -35,6 +35,7 @@ Route::post('sucursales', [SucursalController::class,'store'])->name('sucursales
 
 Route::get('sucursales/{sucursal}', [SucursalController::class, 'show'])->name('sucursales.show');
 
+<<<<<<< Updated upstream
 Route::get('sucursales/{sucursal}/edit', function ($sucursal){
     return "vista editar";
 });
@@ -91,3 +92,6 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::group(['middleware' => 'auth'],function(){
     Route::get('/', [HomeController::class, 'index'])->name('home');
 });
+=======
+Route::resource('actividades', ActividadesController::class);
+>>>>>>> Stashed changes
