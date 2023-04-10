@@ -20,6 +20,7 @@
 <body>
     <a href="{{url('bajas/create')}}" class="btn btn-success">Registrar Nuevo Equipo</a>
 <br><br>
+<h1>Hola k ase</h1>
 <table class="table table-light">
     <thead class="thead-light">
         <tr>
