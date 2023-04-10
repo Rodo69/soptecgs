@@ -7,6 +7,7 @@ use App\Http\Controllers\SucursalController;
 use Faker\Guesser\Name;
 //PARA FUNCIONAR CON RUTAS DE EMPLEADO
 use App\Http\Controllers\EmpleadosController;
+use App\Http\Controllers\EquiposbajaController;
 use App\Http\Controllers\EquiposController;
 use App\Http\Controllers\SucursalesController;
 use App\Models\empleados;
@@ -39,6 +40,8 @@ Route::resource('sucursales', SucursalController::class);
 Route::resource('servidores', ServidoresController::class);
 
 Route::resource('actividades', ActividadesController::class);
+//RUTAS
+Route::resource('bajas', EquiposbajaController::class);
 
 Route::get('/', function () {
     return view('welcome');
@@ -51,6 +54,9 @@ Route::resource('equipos', EquiposController::class)->middleware('auth');
 
 Route::get('/sucursales/create',[SucursalesController::class,'create']);
 Route::resource('sucursales', SucursalesController::class)->middleware('auth');
+
+Route::get('/bajas/create',[EquiposbajaController::class,'create']);
+Route::resource('bajas', EquiposbajaController::class)->middleware('auth');
 Auth::routes();
 ////AQUI DEFINIMOS LA RUTA A LA CUAL NOS CARGARA LA PAGINA
 Route::get('/home', [HomeController::class, 'index'])->name('home');

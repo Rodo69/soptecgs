@@ -51,7 +51,7 @@
                             CheckList
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="{{ route('empleado.index') }}">Empleados</a></li>
+                            <li><a class="dropdown-item" href="{{ route('bajas.index') }}">Equipos Dañados</a></li>
                             <li><a class="dropdown-item" href="{{ route('equipos.index') }}">Equipos</a></li>
                             <li><a class="dropdown-item" href="{{ route('sucursales.index') }}">Sucursales</a></li>
                         </ul>
