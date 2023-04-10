@@ -34,7 +34,7 @@
             <th>Sucursal</th>
             <th>Unidad</th>
             <th>Equipo</th>
-            <th>Acciones</th>
+            <th>Acciones1</th>
         </tr>
     </thead>
     <tbody>
