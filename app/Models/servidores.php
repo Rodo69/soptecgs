@@ -8,8 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class servidores extends Model
 {
     use HasFactory;
-<<<<<<< Updated upstream
-=======
 
     //protecded $fillable = ('nombre', 'sucursal')
     protected $guarded = []; //status
@@ -19,5 +17,4 @@ class servidores extends Model
         return $this->belongsTo(sucursales::class, 'sucursalasig');
      }
 
->>>>>>> Stashed changes
 }

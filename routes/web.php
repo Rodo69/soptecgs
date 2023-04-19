@@ -9,6 +9,7 @@ use Faker\Guesser\Name;
 use App\Http\Controllers\EmpleadosController;
 use App\Http\Controllers\EquiposbajaController;
 use App\Http\Controllers\EquiposController;
+use App\Http\Controllers\ServidoresController;
 use App\Http\Controllers\SucursalesController;
 use App\Models\empleados;
 use GuzzleHttp\Promise\Create;
@@ -29,23 +30,21 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', HomeController::class);
 
-Route::get('home', [HomeController::class, 'index']);
+//Route::get('home', [HomeController::class, 'index']);
 
-//Rutas sucursales
-
-Route::resource('sucursales', SucursalController::class);
-
-//Rutas Servidores
-
-Route::resource('servidores', ServidoresController::class);
-
-Route::resource('actividades', ActividadesController::class);
-//RUTAS
-Route::resource('bajas', EquiposbajaController::class);
-
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['middleware' => 'auth'],function(){
+    Route::get('home', [HomeController::class, 'index']);
 });
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('/servidores/create',[ServidoresController::class,'create']);
+Route::resource('servidores', ServidoresController::class)->middleware('auth');
+
+Route::get('/actividades/create', [ActividadesController::class,'create']);
+Route::resource('actividades', ActividadesController::class)->middleware('auth');
+
 Route::get('/empleado/create',[EmpleadosController::class,'create']);
 Route::resource('empleado', EmpleadosController::class)->middleware('auth');
 
@@ -59,9 +58,9 @@ Route::get('/bajas/create',[EquiposbajaController::class,'create']);
 Route::resource('bajas', EquiposbajaController::class)->middleware('auth');
 Auth::routes();
 ////AQUI DEFINIMOS LA RUTA A LA CUAL NOS CARGARA LA PAGINA
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+// Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::group(['middleware' => 'auth'],function(){
-    Route::get('/', [HomeController::class, 'index'])->name('home');
-});
+// Route::group(['middleware' => 'auth'],function(){
+//     Route::get('/', [HomeController::class, 'index'])->name('home');
+// });
 

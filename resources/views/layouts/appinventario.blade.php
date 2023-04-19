@@ -62,9 +62,9 @@
                             AgendaVirtual
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="{{ route('empleado.index') }}">Empleados</a></li>
-                            <li><a class="dropdown-item" href="{{ route('equipos.index') }}">Equipos</a></li>
-                            <li><a class="dropdown-item" href="{{ route('sucursales.index') }}">Sucursales</a></li>
+                            <li><a class="dropdown-item" href="{{ route('servidores.index') }}">Servidores</a></li>
+                            <li><a class="dropdown-item" href="{{ route('sucursales.index') }}">Sucusales</a></li>
+                            <li><a class="dropdown-item" href="{{ route('actividades.index') }}">Agenda</a></li>
                         </ul>
                     </li>
                     <!-- Right Side Of Navbar -->
