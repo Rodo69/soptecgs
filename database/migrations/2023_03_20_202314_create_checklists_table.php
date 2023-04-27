@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('checklists', function (Blueprint $table) {
             $table->id();
-            $table->string('sucursal');
-            $table->string('numero_sucursal');
-            $table->string('gerente_tienda'); 
-            $table->string('foto_antes'); 
-            $table->string('foto_despues');                 
+            $table->unsignedBigInteger('sucursal_name');  
+            $table->unsignedBigInteger('ing_zona');  
+            $table->unsignedBigInteger('gerente_tienda');  
+            $table->string('foto_fachada');    
             $table->timestamps();
+            $table->foreign('sucursal_name')->references('id')->on('sucursales')->onDelete('cascade');
         });
     }
 

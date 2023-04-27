@@ -14,11 +14,12 @@ return new class extends Migration
         Schema::create('equiposbajas', function (Blueprint $table) {
             $table->id();
             $table->string('tipo');
+            $table->string('modelo');  
+            $table->string('marca');  
             $table->string('placa');
             $table->string('serie');
-            $table->string('foto_equipo');
-            $table->string('modelo');     
-            $table->string('ing_cargo');
+            $table->string('descripcion');
+            $table->string('foto_obsoleto');
             $table->timestamps();
         });
     }

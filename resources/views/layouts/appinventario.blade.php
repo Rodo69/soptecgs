@@ -45,15 +45,16 @@
                             <li><a class="dropdown-item" href="{{ route('sucursales.index') }}">Sucursales</a></li>
                         </ul>
                     </li>
+
                     <li class="nav-item dropdown navbar-nav me-auto">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             CheckList
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="{{ route('bajas.index') }}">Equipos Dañados</a></li>
-                            <li><a class="dropdown-item" href="{{ route('equipos.index') }}">Equipos</a></li>
-                            <li><a class="dropdown-item" href="{{ route('sucursales.index') }}">Sucursales</a></li>
+                            <li><a class="dropdown-item" href="{{ route('bajas.index') }}">Equipos Obsoletos</a></li>
+                            <li><a class="dropdown-item" href="{{ route('checklist.index') }}">Mantenimiento</a></li>
+                            
                         </ul>
                     </li>
                     <li class="nav-item dropdown navbar-nav me-auto">

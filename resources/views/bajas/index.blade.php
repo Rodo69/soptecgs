@@ -8,7 +8,7 @@
     {{Session::get('mensaje')}}
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
-        </button>
+        </button>  
     </div>
     @endif
     <div class="container">
@@ -18,20 +18,23 @@
     <title>Document</title>
 </head>
 <body>
-    <a href="{{url('bajas/create')}}" class="btn btn-success">Registrar Nuevo Equipo</a>
-<br><br>
-<h1>Hola k ase</h1>
+
+    <a href="{{url('bajas/create')}}" class="btn btn-warning">Agregar</a>
+    <a href="{{url('bajas/pdf')}}" class="btn btn-dark">PDF</a>
+  <br>
+
 <table class="table table-light">
     <thead class="thead-light">
         <tr>
-            <th>#</th>
+            <th>-</th>
             <th>Foto</th>        
             <th>Tipo</th>
-            <th>Marca</th>
             <th>Modelo</th>
-            <th>Serie</th>
+            <th>Marca</th>
             <th>Placa</th>
-            <th>Acciones1</th>
+            <th>Serie</th>
+            <th>Descripción</th>
+            <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
@@ -39,15 +42,17 @@
         <tr>
             <td>{{$equipobaja->id}}</td>
             <td>
-                <img class="img-thumbnail img-fluid" src="{{asset('storage').'/'.$equipobaja->foto_equipo}}" width="120" alt="" srcset="">
+                <img class="img-thumbnail img-fluid" src="{{asset('storage').'/'.$equipobaja->foto_obsoleto}}" width="120" alt="" srcset="">
             </td>
             <td>{{$equipobaja->tipo}}</td>
+            <td>{{$equipobaja->modelo}}</td>
+            <td>{{$equipobaja->marca}}</td>
             <td>{{$equipobaja->placa}}</td>
             <td>{{$equipobaja->serie}}</td>
-            <td>{{$equipobaja->modelo}}</td>
-            <td>{{$equipobaja->ing_cargo}}</td>
+            <td>{{$equipobaja->descripcion}}</td>
             <td>
-            <a href="{{url('/bajas/'.$equipobaja->id.'/edit')}}" class="btn btn-warning">Editar</a>    | 
+                
+            <a href="{{url('/bajas/'.$equipobaja->id.'/edit')}}" class="btn btn-primary">Editar</a>    | 
 
             <form action="{{url('/bajas/'.$equipobaja->id)}}" class="d-inline" method="post">
             @csrf    
