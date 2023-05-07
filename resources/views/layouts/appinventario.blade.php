@@ -8,11 +8,16 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+
+    <!-- PARA EL CALENDARIO -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.css">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/locales-all.js"></script>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -23,7 +28,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <img src="imagenes/gs.png" style="width: 14%">
+                    <img src="imagenes/gs.png" style="width: 10%">
                     {{-- {{ config('app.titulo', 'Inicio') }} --}}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -42,7 +47,7 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="{{ route('empleado.index') }}">Empleados</a></li>
                             <li><a class="dropdown-item" href="{{ route('equipos.index') }}">Equipos</a></li>
-                            <li><a class="dropdown-item" href="{{ route('sucursales.index') }}">Sucursales</a></li>
+                            {{-- <li><a class="dropdown-item" href="{{ route('sucursales.index') }}">Sucursales</a></li> --}}
                         </ul>
                     </li>
 
@@ -100,6 +105,11 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
+
+                                    {{-- <a class="dropdown-item" href="{{ route('register') }}">{{ __('Register') }}
+                                    </a> --}}
+
+
                                 </div>
                             </li>
                         @endguest
@@ -107,6 +117,8 @@
                 </div>
             </div>
         </nav>
+        @vite(['resources/sass/app.scss', 'resources/js/agenda.js'])
+{{-- <script src="{{ asset('resources/js/agenda.js') }}" defer></script> --}}
 
         <main class="py-4">
             @yield('content')

@@ -1,4 +1,4 @@
-<h1>{{ $modo }} Equipos</h1>
+<h1>{{ $modo }} Sucursales</h1>
 @if (count($errors) > 0)
     <div class="alert alert-danger" role="alert">
         <ul>
@@ -74,7 +74,6 @@
         value="{{ isset($sucursal->comercio) ? $sucursal->comercio : old('comercio') }}" id="comercio">
     <br>
 </div>
-
 
 <input class="btn btn-success" type="submit" Value="{{ $modo }} datos">
 <a class="btn btn-primary" href="{{ url('sucursales/') }}">Cancelar</a>

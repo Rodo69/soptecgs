@@ -18,8 +18,7 @@
     <title> SERVIDORES </title>
 </head>
 <body>
-    <a href="{{route('servidores.create')}}" class="btn btn-outline-primary">Registar un servidor</a>
-
+    <a href="{{route('servidores.create')}}" class="btn btn-outline-primary">Registar Nuevo Servidor</a>
 <br><br>
 <table class="table table-light">
     <thead class="thead-light">
@@ -50,13 +49,19 @@
             <img class="img-thumbnail img-fluid" src="{{asset($servidor->imagen)}}" width="100" alt="" srcset="">
         </td>
           <td>    
-          <a href="{{route('servidores.edit', $servidor->id)}}" class="btn btn-primary">Editar</a>
+          {{-- <a href="{{route('servidores.edit', $servidor->id)}}" class="btn btn-warning">Editar</a>
 
-          <form action="{{route('servidores.destroy', $servidor)}}" method="POST">
+          <form action="{{route('servidores.destroy', $servidor)}}" class="d-inline"  method="POST">
             @csrf
             @method('delete')
             <br><button type="submit" class="btn btn-danger" onClick="return confirm('¿Eliminar definitivamente?')">Eliminar</button>
-          </form>
+          </form> --}}
+          <a href="{{route('servidores.edit', $servidor->id)}}" class="btn btn-warning">Editar</a>  | 
+          <form action="{{route('servidores.destroy', $servidor)}}" class="d-inline" method="post">
+            @csrf    
+            {{method_field('DELETE')}}
+            <input type="submit" class="btn btn-danger" onClick="return confirm('¿Quieres borrar?')" value="Borrar">
+            </form>
           </td>
         </tr>
 
