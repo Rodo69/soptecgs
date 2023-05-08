@@ -28,7 +28,11 @@ class ActividadesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validando información
+        request()->validate(Actividades::$rules);
+        // ORM eloquen
+        $evento=Actividades::create($request->all());
+        $evento->save();  
     }
 
     /**

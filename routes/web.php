@@ -44,6 +44,7 @@ Route::get('/servidores/create',[ServidoresController::class,'create']);
 Route::resource('servidores', ServidoresController::class)->middleware('auth');
 
 Route::get('/actividades/create', [ActividadesController::class,'create']);
+Route::post('/actividades/agregar',[ActividadesController::class,'store']);
 Route::resource('actividades', ActividadesController::class)->middleware('auth');
 
 Route::get('/empleado/create',[EmpleadosController::class,'create']);

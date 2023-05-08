@@ -1,9 +1,8 @@
-  
       document.addEventListener('DOMContentLoaded', function() {
 
     //   Recolectamos los datos del formulario
 
-        // let formulario = document.querySelector("form");
+        let formulario = document.querySelector("form");
 
         var calendarEl = document.getElementById('agenda');
 
@@ -23,12 +22,28 @@
         }
 
         });
+
         calendar.render();
 
-        // document.getElementById("btnGuardar").addEventListener("click",function(){
+        document.getElementById("btnGuardar").addEventListener("click",function(){
 
-        //     const datos = new FormData(formulario);
-        //     console.log(datos);
-        //     console.log(formulario.title.value);
-        // });
+            const datos = new FormData(formulario);
+            console.log(datos);
+            // console.log(formulario.title.value);
+
+            axios.post('http://127.0.0.1:8000/actividades',datos).
+            then(
+                (respuesta)=>{
+                    $("#evento").modal("hide");
+                }
+                ).catch(
+                    (
+                        error=>{
+                            if(error.response){
+                                console.log(error.response.data);
+                            }
+                        }
+                    )
+                )
+        });
       });
