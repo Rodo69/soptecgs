@@ -67,4 +67,6 @@ Route::resource('bajas', EquiposbajaController::class)->middleware('auth');
 Auth::routes();
 ////AQUI DEFINIMOS LA RUTA A LA CUAL NOS CARGARA LA PAGINA
  Route::get('/home', [HomeController::class, 'index'])->name('home');
+//RUTA DE PDF EMPLEADOS
+Route::get('empleados/pdf',[EmpleadosController::class,'pdf'])->name('empleados.pdf');
 

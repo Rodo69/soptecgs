@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\empleados;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class EmpleadosController extends Controller
 {
@@ -14,6 +15,14 @@ class EmpleadosController extends Controller
     {
         $datos['empleados']=Empleados::paginate(5);
         return view('empleado.index',$datos);
+    }
+    
+    public function pdf()
+    {
+        $empleados=Empleados::paginate();
+        //return view('empleado.pdf',compact('empleados'));
+        $pdf=PDF::loadView('empleado.pdf',['empleados'=>$empleados]);  
+        return $pdf->setPaper('a4','landscape')->stream();
     }
 
     /**
