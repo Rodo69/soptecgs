@@ -41,15 +41,19 @@
     <br>
     <div class="form-group">
         <label for="Nombre">Sucursal Asignada</label>
-        <input type="text" class="form-control" name="sucursal_asignada"
-            value="{{ isset($empleado->sucursal_asignada) ? $empleado->sucursal_asignada : old('sucursal_asignada') }}"
-            id="sucursal_asignada">
+        <select name="sucursal_asignada" id="sucursal_asignada" class="form-control">
+            @foreach ($sucursales as $sucursal)
+            <option id="sucursal_asignada" value="{{ $sucursal->id}}">{{$sucursal->nombre}}</option>
+            @endforeach
+        </select>
         <br>
         <div class="form-group">
             <label for="Nombre">Unidad Asignada</label>
-            <input type="text" class="form-control" name="unidad_asignada"
-                value="{{ isset($empleado->unidad_asignada) ? $empleado->unidad_asignada : old('unidad_asignada') }}"
-                id="unidad_asignada">
+            <select name="unidad_asignada" id="unidad_asignada" class="form-control">
+                @foreach ($categorias as $categoria)
+                <option id="unidad_asignada" value="{{ $categoria->id}}">{{$categoria->nombre}}</option>
+                @endforeach
+            </select>
             <br>
             <div class="form-group">
                 <label for="Nombre">Puesto</label>

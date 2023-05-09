@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\categoria;
+use App\Models\empleados;
 use App\Models\equipos;
+use App\Models\sucursales;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -49,7 +52,10 @@ class EquiposController extends Controller
      */
     public function create()
     {
-        return view('equipos.create');
+        $empleados = Empleados::all();
+        $sucursales = sucursales::all();
+        $categorias = categoria::all();
+        return view('equipos.create',compact('empleados','sucursales','categorias'));
     }
 
     /**
@@ -92,8 +98,11 @@ class EquiposController extends Controller
      */
     public function edit($id)
     {
+        $empleados = Empleados::all();
+        $sucursales = sucursales::all();
+        $categorias = categoria::all();
         $equipo=Equipos::FindOrFail($id);
-        return view('equipos.edit',compact('equipo'));
+        return view('equipos.edit',compact('equipo','empleados','sucursales','categorias'));
     }
 
     /**

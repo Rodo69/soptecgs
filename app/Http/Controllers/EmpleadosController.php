@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\empleados;
+use App\Models\categoria;
+use App\Models\sucursales;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 
@@ -30,7 +32,9 @@ class EmpleadosController extends Controller
      */
     public function create()
     {
-        return view('empleado.create');
+        $sucursales = sucursales::all();
+        $categorias = categoria::all();
+        return view('empleado.create',compact('sucursales','categorias'));
     }
 
     /**
@@ -73,7 +77,9 @@ class EmpleadosController extends Controller
     public function edit($id)
     {
         $empleado=Empleados::FindOrFail($id);
-        return view('empleado.edit',compact('empleado'));
+        $categorias = categoria::all();
+        $sucursales = sucursales::all();
+        return view('empleado.edit',compact('empleado','categorias','sucursales'));
         
     }
 
