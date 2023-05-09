@@ -24,8 +24,7 @@
 <table class="table table-light">
     <thead class="thead-light">
         <tr>
-            <th>#</th>
-            <th>Foto</th>        
+            <th>#</th>       
             <th>Tipo</th>
             <th>Marca</th>
             <th>Modelo</th>
@@ -35,16 +34,13 @@
             <th>Sucursal</th>
             <th>Unidad</th>
             <th>Equipo</th>
-            <th>Acciones1</th>
+            <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
         @foreach($equipos as $equipo)
         <tr>
             <td>{{$equipo->id}}</td>
-            <td>
-                <img class="img-thumbnail img-fluid" src="{{asset('storage').'/'.$equipo->foto_equipo}}" width="120" alt="" srcset="">
-            </td>
             <td>{{$equipo->tipo}}</td>
             <td>{{$equipo->marca}}</td>
             <td>{{$equipo->modelo}}</td>
