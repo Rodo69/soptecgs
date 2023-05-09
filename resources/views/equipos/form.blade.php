@@ -64,16 +64,6 @@
         value="{{ isset($equipo->nombre_equipo) ? $equipo->nombre_equipo : old('nombre_equipo') }}" id="nombre_equipo">
     <br>
 </div>
-
-<div class="form-group">
-    <label for="Nombre">Foto</label>
-    @if (isset($equipo->foto_equipo))
-        <img class="img-thumbnail img-fluid" src="{{ asset('storage') . '/' . $equipo->foto_equipo }}" width="100"
-            alt="" srcset="">
-    @endif
-    <input type="file" class="form-control" Name="foto_equipo" value="{" id="foto_equipo">
-    <br>
-</div>
 <input class="btn btn-success" type="submit" Value="{{ $modo }} datos">
 <a class="btn btn-primary" href="{{ url('equipos/') }}">Cancelar</a>
 </div>
