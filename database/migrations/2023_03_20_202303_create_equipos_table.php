@@ -26,7 +26,7 @@ return new class extends Migration
 
             $table->foreign('empleado_asig')->references('id')->on('empleados')->onDelete('cascade');
             $table->foreign('sucursal_asig')->references('id')->on('sucursales')->onDelete('cascade');
-            $table->foreign('unidad_asig')->references('id')->on('sucursales')->onDelete('cascade');
+            $table->foreign('unidad_asig')->references('id')->on('categoria')->onDelete('cascade');
         });
     }
 

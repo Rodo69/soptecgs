@@ -24,7 +24,7 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreign('sucursal_asignada')->references('id')->on('sucursales')->onDelete('cascade');
-            $table->foreign('unidad_asignada')->references('id')->on('sucursales')->onDelete('cascade');
+            $table->foreign('unidad_asignada')->references('id')->on('categoria')->onDelete('cascade');
         });
     }
 

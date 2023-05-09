@@ -26,7 +26,6 @@
         </thead>
         <tbody>
             <tr>
-            
             <td>{{$equipo->tipo}}</td>
             <td>{{$equipo->marca}}</td>
             <td>{{$equipo->modelo}}</td>
@@ -43,3 +42,5 @@
 </body>
 
 </html>
+
+
