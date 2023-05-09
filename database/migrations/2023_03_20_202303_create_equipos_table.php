@@ -21,8 +21,7 @@ return new class extends Migration
             $table->unsignedBigInteger('empleado_asig');
             $table->unsignedBigInteger('sucursal_asig'); 
             $table->unsignedBigInteger('unidad_asig');
-            $table->string('nombre_equipo');
-            $table->string('foto_equipo');           
+            $table->string('nombre_equipo');           
             $table->timestamps();
 
             $table->foreign('empleado_asig')->references('id')->on('empleados')->onDelete('cascade');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\equipos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class EquiposController extends Controller
 {
@@ -17,6 +18,32 @@ class EquiposController extends Controller
         return view('equipos.index',$datos);
     }
 
+    public function pdf()
+    {
+        $equipos=Equipos::paginate();
+        //return view('empleado.pdf',compact('empleados'));
+        $pdf=PDF::loadView('equipos.pdf',['equipos'=>$equipos]);  
+        return $pdf->setPaper('a4','landscape')->stream();
+    }
+
+    public function pdfbaja($id)
+    {
+        
+        $equipo = Equipos::find($id);
+        //dd($empleado);
+        //return view('empleado.pdfbaja',compact('empleado'));
+        $pdf=PDF::loadView('equipos.pdfbaja',['equipo'=>$equipo]);
+        return $pdf->setPaper('a4','landscape')->stream();
+    }
+    public function pdfalta($id)
+    {
+        
+        $equipo = Equipos::find($id);
+        //dd($empleado);
+        //return view('empleado.pdfbaja',compact('empleado'));
+        $pdf=PDF::loadView('equipos.pdfalta',['equipo'=>$equipo]);
+        return $pdf->setPaper('a4','landscape')->stream();
+    }
     /**
      * Show the form for creating a new resource.
      */
