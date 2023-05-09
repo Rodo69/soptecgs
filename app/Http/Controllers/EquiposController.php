@@ -69,17 +69,12 @@ class EquiposController extends Controller
             'sucursal_asig'=>'required|string|max:100',
             'unidad_asig'=>'required|string|max:100',
             'nombre_equipo'=>'required|string|max:100',
-            'foto_equipo'=>'required|max:10000|mimes:jpeg,png,jpg',
         ];
         $mensaje=[
             'required'=>'El campo :attribute es requerido',
-            'foto_equipo.required'=>'La foto es requerida'
         ];
         $this->validate($request,$campos,$mensaje);
         $datosEquipo= request()->except('_token');
-        if($request->hasFile('foto_equipo')){
-            $datosEquipo['foto_equipo']=$request->file('foto_equipo')->store('uploads','public');
-        }
         Equipos::insert($datosEquipo);
         return redirect('equipos')->with('mensaje','Equipo Agregado con exito');
     }
