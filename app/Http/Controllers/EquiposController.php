@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\categoria;
+use App\Models\empleados;
 use App\Models\equipos;
+use App\Models\sucursales;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class EquiposController extends Controller
 {
@@ -17,12 +21,41 @@ class EquiposController extends Controller
         return view('equipos.index',$datos);
     }
 
+    public function pdf()
+    {
+        $equipos=Equipos::paginate();
+        //return view('empleado.pdf',compact('empleados'));
+        $pdf=PDF::loadView('equipos.pdf',['equipos'=>$equipos]);  
+        return $pdf->setPaper('a4','landscape')->stream();
+    }
+
+    public function pdfbaja($id)
+    {
+        
+        $equipo = Equipos::find($id);
+        //dd($empleado);
+        //return view('empleado.pdfbaja',compact('empleado'));
+        $pdf=PDF::loadView('equipos.pdfbaja',['equipo'=>$equipo]);
+        return $pdf->setPaper('a4','landscape')->stream();
+    }
+    public function pdfalta($id)
+    {
+        
+        $equipo = Equipos::find($id);
+        //dd($empleado);
+        //return view('empleado.pdfbaja',compact('empleado'));
+        $pdf=PDF::loadView('equipos.pdfalta',['equipo'=>$equipo]);
+        return $pdf->setPaper('a4','landscape')->stream();
+    }
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        return view('equipos.create');
+        $empleados = Empleados::all();
+        $sucursales = sucursales::all();
+        $categorias = categoria::all();
+        return view('equipos.create',compact('empleados','sucursales','categorias'));
     }
 
     /**
@@ -42,17 +75,12 @@ class EquiposController extends Controller
             'sucursal_asig'=>'required|string|max:100',
             'unidad_asig'=>'required|string|max:100',
             'nombre_equipo'=>'required|string|max:100',
-            'foto_equipo'=>'required|max:10000|mimes:jpeg,png,jpg',
         ];
         $mensaje=[
             'required'=>'El campo :attribute es requerido',
-            'foto_equipo.required'=>'La foto es requerida'
         ];
         $this->validate($request,$campos,$mensaje);
         $datosEquipo= request()->except('_token');
-        if($request->hasFile('foto_equipo')){
-            $datosEquipo['foto_equipo']=$request->file('foto_equipo')->store('uploads','public');
-        }
         Equipos::insert($datosEquipo);
         return redirect('equipos')->with('mensaje','Equipo Agregado con exito');
     }
@@ -70,8 +98,11 @@ class EquiposController extends Controller
      */
     public function edit($id)
     {
+        $empleados = Empleados::all();
+        $sucursales = sucursales::all();
+        $categorias = categoria::all();
         $equipo=Equipos::FindOrFail($id);
-        return view('equipos.edit',compact('equipo'));
+        return view('equipos.edit',compact('equipo','empleados','sucursales','categorias'));
     }
 
     /**

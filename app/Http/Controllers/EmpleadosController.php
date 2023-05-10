@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\empleados;
+use App\Models\categoria;
+use App\Models\sucursales;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class EmpleadosController extends Controller
 {
@@ -15,13 +18,23 @@ class EmpleadosController extends Controller
         $datos['empleados']=Empleados::paginate(5);
         return view('empleado.index',$datos);
     }
+    
+    public function pdf()
+    {
+        $empleados=Empleados::paginate();
+        //return view('empleado.pdf',compact('empleados'));
+        $pdf=PDF::loadView('empleado.pdf',['empleados'=>$empleados]);  
+        return $pdf->setPaper('a4','landscape')->stream();
+    }
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        return view('empleado.create');
+        $sucursales = sucursales::all();
+        $categorias = categoria::all();
+        return view('empleado.create',compact('sucursales','categorias'));
     }
 
     /**
@@ -64,7 +77,9 @@ class EmpleadosController extends Controller
     public function edit($id)
     {
         $empleado=Empleados::FindOrFail($id);
-        return view('empleado.edit',compact('empleado'));
+        $categorias = categoria::all();
+        $sucursales = sucursales::all();
+        return view('empleado.edit',compact('empleado','categorias','sucursales'));
         
     }
 

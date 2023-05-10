@@ -21,6 +21,7 @@
 
     <body>
         <a href="{{ url('empleado/create') }}" class="btn btn-success">Registrar Nuevo Empleado</a>
+        <a href="{{url('empleados/pdf')}}" class="btn btn-success">GenerarPDF</a>
         <br><br>
         <table class="table table-light">
             <thead class="thead-light">

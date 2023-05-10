@@ -1,4 +1,13 @@
-<h1>{{ $modo }} Equipos</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>{{ $modo }} Equipos</h1>
 @if (count($errors) > 0)
     <div class="alert alert-danger" role="alert">
         <ul>
@@ -17,15 +26,13 @@
 <div class="form-group">
     <label for="Nombre">Marca</label>
     <input type="text" class="form-control" name="marca"
-        value="{{ isset($equipo->marca) ? $equipo->marca : old('marca') }}"
-        id="marca">
+        value="{{ isset($equipo->marca) ? $equipo->marca : old('marca') }}" id="marca">
     <br>
 </div>
 <div class="form-group">
     <label for="Nombre">Modelo</label>
     <input type="text" class="form-control" name="modelo"
-        value="{{ isset($equipo->modelo) ? $equipo->modelo : old('modelo') }}"
-        id="modelo">
+        value="{{ isset($equipo->modelo) ? $equipo->modelo : old('modelo') }}" id="modelo">
     <br>
 </div>
 <div class="form-group">
@@ -42,20 +49,29 @@
 </div>
 <div class="form-group">
     <label for="Nombre">Empleado</label>
-    <input type="text" class="form-control" name="empleado_asig"
-        value="{{ isset($equipo->empleado_asig) ? $equipo->empleado_asig : old('empleado_asig') }}" id="empleado_asig">
+    <select name="empleado_asig" id="empleado_asig" class="form-control">
+        @foreach ($empleados as $empleado)
+        <option id="empleado_asig" value="{{ $empleado->id}}">{{$empleado->nombre_colaborador}}</option>
+        @endforeach
+    </select>
     <br>
 </div>
 <div class="form-group">
     <label for="Nombre">Sucursal</label>
-    <input type="text" class="form-control" name="sucursal_asig"
-        value="{{ isset($equipo->sucursal_asig) ? $equipo->sucursal_asig : old('sucursal_asig') }}" id="empleado_asig">
+    <select name="sucursal_asig" id="sucursal_asig" class="form-control">
+        @foreach ($sucursales as $sucursal)
+        <option id="sucursal_asig" value="{{ $sucursal->id}}">{{$sucursal->nombre}}</option>
+        @endforeach
+    </select>
     <br>
 </div>
 <div class="form-group">
     <label for="Nombre">Unidad</label>
-    <input type="text" class="form-control" name="unidad_asig"
-        value="{{ isset($equipo->unidad_asig) ? $equipo->unidad_asig : old('unidad_asig') }}" id="empleado_asig">
+    <select name="unidad_asig" id="unidad_asig" class="form-control">
+        @foreach ($categorias as $categoria)
+        <option id="unidad_asig" value="{{ $categoria->id}}">{{$categoria->nombre}}</option>
+        @endforeach
+    </select>
     <br>
 </div>
 <div class="form-group">
@@ -64,16 +80,9 @@
         value="{{ isset($equipo->nombre_equipo) ? $equipo->nombre_equipo : old('nombre_equipo') }}" id="nombre_equipo">
     <br>
 </div>
-
-<div class="form-group">
-    <label for="Nombre">Foto</label>
-    @if (isset($equipo->foto_equipo))
-        <img class="img-thumbnail img-fluid" src="{{ asset('storage') . '/' . $equipo->foto_equipo }}" width="100"
-            alt="" srcset="">
-    @endif
-    <input type="file" class="form-control" Name="foto_equipo" value="{" id="foto_equipo">
-    <br>
-</div>
 <input class="btn btn-success" type="submit" Value="{{ $modo }} datos">
 <a class="btn btn-primary" href="{{ url('equipos/') }}">Cancelar</a>
 </div>
+</body>
+</html>
+

@@ -21,13 +21,12 @@ return new class extends Migration
             $table->unsignedBigInteger('empleado_asig');
             $table->unsignedBigInteger('sucursal_asig'); 
             $table->unsignedBigInteger('unidad_asig');
-            $table->string('nombre_equipo');
-            $table->string('foto_equipo');           
+            $table->string('nombre_equipo');           
             $table->timestamps();
 
             $table->foreign('empleado_asig')->references('id')->on('empleados')->onDelete('cascade');
             $table->foreign('sucursal_asig')->references('id')->on('sucursales')->onDelete('cascade');
-            $table->foreign('unidad_asig')->references('id')->on('sucursales')->onDelete('cascade');
+            $table->foreign('unidad_asig')->references('id')->on('categoria')->onDelete('cascade');
         });
     }
 
