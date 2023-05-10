@@ -28,20 +28,20 @@
         },
         eventClick:function(info){
 
-            var actividad=info.event;
-            console.log(actividad);
+            var actividades=info.event;
+            console.log(actividades);
 
-            axios.post('actividades/editar/'+info.event.id).
+            axios.get("http://127.0.0.1:8000/actividades/"+info.event.id).
             then(
                 (respuesta)=>{
 
-                    formulario.id.value=respuesta.data.id;
-                    formulario.title.value=respuesta.data.title;
-                    formulario.color.value=respuesta.data.color;
-                    formulario.start.value=respuesta.data.start;
-                    formulario.end.value=respuesta.data.end;
+                    //formulario.id.value=respuesta.data.id;
+                     formulario.title.valueOf=respuesta.data.title;
+                     formulario.color.value=respuesta.data.color;
+                     formulario.start.value=respuesta.data.start;
+                     formulario.end.value=respuesta.data.end;
 
-                    $("#actividades").modal("show");
+                    $("#actividad").modal("show");
                 }
                 ).catch(
                     (
