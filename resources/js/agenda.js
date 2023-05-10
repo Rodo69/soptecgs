@@ -69,11 +69,11 @@
         function enviarDatos(url){
             const datos = new FormData(formulario);
 
-            axios.post(actividades, datos).
+            axios.post("actividades", datos).
             then(
                 (respuesta)=>{
                     calendar.refetchEvents();
-                    $("#actividades").modal("hide");
+                    $("#actividad").modal("hide");
                 }
                  ).catch(
                     (error=>{if(error.response){console.log(error.response.data);}})
