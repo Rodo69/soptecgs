@@ -6,7 +6,7 @@ namespace App\Http\Controllers;
 use App\Models\equiposbaja;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use PDF;
+use Barryvdh\DomPDF\Facade\Pdf;
 class EquiposbajaController extends Controller
 {
     /**
@@ -14,6 +14,8 @@ class EquiposbajaController extends Controller
      */
     public function index()
     {
+
+      
         $datos['equiposbaja']=equiposbaja::paginate(5);
         return view('bajas.index',$datos);
     }
@@ -22,7 +24,6 @@ class EquiposbajaController extends Controller
     {
         $equiposbaja=equiposbaja::paginate();
         $pdf = PDF::loadView('bajas.pdf',['equiposbaja'=>$equiposbaja]);
-      //  $pdf->loadHTML('<h1>Test</h1>');
         return $pdf->stream();
        // return view('bajas.pdf',compact('equiposbaja')); 
     }

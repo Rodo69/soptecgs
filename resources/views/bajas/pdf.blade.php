@@ -8,8 +8,8 @@
     <title>PDF</title>
 </head>
 <body>
-  
-<h2>Lista de equipos obsoletos</h2>
+<header><img src="imagenes/head.png" alt="450" width="450" style="padding-left:15%  "></header>
+<h2 style="text-align:center"> Lista de equipos obsoletos</h2>
     <table class="table table-light">
         <thead class="thead-light">
             <tr>
@@ -50,5 +50,6 @@
             @endforeach
         </tbody>
     </table>
+    <footer><img src="imagenes/firmaobsoleto.png"  width="400" style="padding-left:22%; padding-top:95%"></footer>
 </body>
 </html>
