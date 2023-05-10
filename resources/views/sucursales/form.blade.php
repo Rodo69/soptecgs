@@ -31,7 +31,7 @@
 </div>
 <div class="form-group">
     <label for="Nombre">Telefono</label>
-    <input type="text" class="form-control" name="telefono_ing"
+    <input type="number" class="form-control" name="telefono_ing"
         value="{{ isset($sucursal->telefono_ing) ? $sucursal->telefono_ing : old('telefono_ing') }}" id="telefono_ing">
     <br>
 </div>

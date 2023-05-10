@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('color');
-            $table->string('star'); 
-            $table->string('end'); 
+            $table->dateTime('start'); 
+            $table->dateTime('end'); 
             $table->timestamps();
         });
     }

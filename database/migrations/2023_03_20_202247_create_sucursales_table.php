@@ -26,9 +26,9 @@ return new class extends Migration
             $table->unsignedBigInteger('comercio');
             $table->timestamps();
 
-            $table->foreign('banco_azteca')->references('id')->on('categoria')->onDelete('cascade');
-            $table->foreign('presta_prenda')->references('id')->on('categoria')->onDelete('cascade');
-            $table->foreign('comercio')->references('id')->on('categoria')->onDelete('cascade');
+            $table->foreign('banco_azteca')->references('id')->on('categorias')->onDelete('cascade');
+            $table->foreign('presta_prenda')->references('id')->on('categorias')->onDelete('cascade');
+            $table->foreign('comercio')->references('id')->on('categorias')->onDelete('cascade');
         });
     }
 

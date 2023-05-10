@@ -9,13 +9,18 @@ class actividades extends Model
 {
     use HasFactory;
 
-    protected $guarded = []; 
-
     static $rules = [
-        'title'=>'require',
-        'color'=>'require',
-        'star'=>'require',
-        'end'=>'require'
+        'title'=>'required',
+        'color'=>'required',
+        'start'=>'required',
+        'end'=>'required',
     ];
+
+    protected $fillable = [
+    'title', 
+    'color', 
+    'start',
+    'end'
+]; 
    
 }
