@@ -2,7 +2,7 @@
 
     //   Recolectamos los datos del formulario
 
-        let formulario = document.getElementById("form");
+        let formulario = document.querySelector("form");
 
         var calendarEl = document.getElementById('agenda');
 
@@ -15,10 +15,10 @@
             center: 'title',
             right: 'dayGridMonth,timeGridWeek,timeGridDay'
         },
-        events:'http://127.0.0.1:8000/actividades/mostrar',
+        events:'/actividades/mostrar',
 
         dateClick:function(info){
-           // formulario.reset();
+            formulario.reset();
 
             // formulario.start.value=info.dateStr;
             // formulario.end.value=info.dateStr;
@@ -28,20 +28,20 @@
         },
         eventClick:function(info){
 
-            var actividades=info.event;
-            console.log(actividades);
+            var actividad=info.event;
+            console.log(actividad);
 
-            axios.get("http://127.0.0.1:8000/actividades/"+info.event.id).
+            axios.post('actividades/editar/'+info.event.id).
             then(
                 (respuesta)=>{
 
-                    //formulario.id.value=respuesta.data.id;
-                     formulario.title.valueOf=respuesta.data.title;
-                     formulario.color.value=respuesta.data.color;
-                     formulario.start.value=respuesta.data.start;
-                     formulario.end.value=respuesta.data.end;
+                    formulario.id.value=respuesta.data.id;
+                    formulario.title.value=respuesta.data.title;
+                    formulario.color.value=respuesta.data.color;
+                    formulario.start.value=respuesta.data.start;
+                    formulario.end.value=respuesta.data.end;
 
-                    $("#actividad").modal("show");
+                    $("#actividades").modal("show");
                 }
                 ).catch(
                     (
@@ -59,7 +59,7 @@
         calendar.render();
 
         document.getElementById("btnGuardar").addEventListener("click",function(){
-            enviarDatos('http://127.0.0.1:8000/actividades/agregar');
+            enviarDatos('localhost/soptecgs/actividades/agregar');
         });
 
         document.getElementById("btnEliminar").addEventListener("click",function(){
@@ -69,11 +69,11 @@
         function enviarDatos(url){
             const datos = new FormData(formulario);
 
-            axios.post("actividades", datos).
+            axios.post('url', datos).
             then(
                 (respuesta)=>{
                     calendar.refetchEvents();
-                    $("#actividad").modal("hide");
+                    $("#actividades").modal("hide");
                 }
                  ).catch(
                     (error=>{if(error.response){console.log(error.response.data);}})

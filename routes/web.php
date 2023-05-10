@@ -44,7 +44,10 @@ Route::get('/servidores/create',[ServidoresController::class,'create']);
 Route::resource('servidores', ServidoresController::class)->middleware('auth');
 
 Route::get('/actividades/create', [ActividadesController::class,'create']);
-Route::post('/actividades/agregar',[ActividadesController::class,'store']);
+Route::get('/actividades/mostrar',[App\Http\Controllers\ActividadesController::class,'show']);
+Route::post('/actividades/agregar',[App\Http\Controllers\ActividadesController::class,'store']);
+Route::post('/actividades/editar/{id}',[App\Http\Controllers\ActividadesController::class,'edit']);
+Route::post('/actividades/borrar/{id}',[App\Http\Controllers\ActividadesController::class,'destroy']);
 Route::resource('actividades', ActividadesController::class)->middleware('auth');
 
 Route::get('/empleado/create',[EmpleadosController::class,'create']);

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\actividades;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class ActividadesController extends Controller
 {
@@ -28,11 +29,10 @@ class ActividadesController extends Controller
      */
     public function store(Request $request)
     {
-        // validando información
-        request()->validate(Actividades::$rules);
-        // ORM eloquen
-        $evento=Actividades::create($request->all());
-        $evento->save();  
+        // // validando información
+        request()->validate(actividades::$rules);
+        // // ORM eloquen
+        $actividades=actividades::create($request->all());
     }
 
     /**
@@ -40,15 +40,21 @@ class ActividadesController extends Controller
      */
     public function show(actividades $actividades)
     {
-        //
+        $actividades= actividades::all();
+        return response()->json($actividades);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(actividades $actividades)
+    public function edit($id)
     {
-        //
+        $actividades=actividades::find($id);
+
+        $actividades->start=Carbon::createFromFormat('Y-m-d H:i:s', $actividades->star)->format('Y-m-d');
+        $actividades->end=Carbon::createFromFormat('Y-m-d H:i:s', $actividades->end)->format('Y-m-d');
+
+        return response()->json($actividades);
     }
 
     /**
@@ -62,8 +68,10 @@ class ActividadesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(actividades $actividades)
+    public function destroy($id)
     {
-        //
+        $actividades=actividades::find($id)->delete();
+        
+        return response()->json($actividades);
     }
 }
