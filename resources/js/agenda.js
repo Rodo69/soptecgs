@@ -2,7 +2,7 @@
 
     //   Recolectamos los datos del formulario
 
-        let formulario = document.querySelector("form");
+        let formulario = document.getElementById("form");
 
         var calendarEl = document.getElementById('agenda');
 
@@ -15,10 +15,10 @@
             center: 'title',
             right: 'dayGridMonth,timeGridWeek,timeGridDay'
         },
-        events:'/actividades/mostrar',
+        events:'http://127.0.0.1:8000/actividades/mostrar',
 
         dateClick:function(info){
-            formulario.reset();
+           // formulario.reset();
 
             // formulario.start.value=info.dateStr;
             // formulario.end.value=info.dateStr;
@@ -59,7 +59,7 @@
         calendar.render();
 
         document.getElementById("btnGuardar").addEventListener("click",function(){
-            enviarDatos('localhost/soptecgs/actividades/agregar');
+            enviarDatos('http://127.0.0.1:8000/actividades/agregar');
         });
 
         document.getElementById("btnEliminar").addEventListener("click",function(){
@@ -69,7 +69,7 @@
         function enviarDatos(url){
             const datos = new FormData(formulario);
 
-            axios.post('url', datos).
+            axios.post(actividades, datos).
             then(
                 (respuesta)=>{
                     calendar.refetchEvents();

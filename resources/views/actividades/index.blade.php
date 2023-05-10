@@ -24,9 +24,7 @@
             </div>
             <div class="modal-body">
                 {{-- FORMULARIO DE MODAL --}}
-                <form action="#" >
-                    {!! csrf_field() !!}
-
+                <form action="" id="form" enctype="multipart/form-data">
                     <div class="form-group">
                       <label for="title">Titulo</label>
                       <input type="text" class="form-control" name="title" id="title" aria-describedby="helpId" placeholder="Escribe el titulo de la actividad">
