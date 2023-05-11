@@ -59,7 +59,7 @@
             @csrf    
             {{method_field('DELETE')}}
             <input type="submit" class="btn btn-danger" onClick="return confirm('¿Quieres borrar?')" value="Borrar">
-           <a href="{{route('bajas.show', $equipobaja->id)}}" class="btn btn-light"><i class="bi bi-archive-fill"></i>
+           <a href="{{route('bajas.show', $equipobaja->id)}}" class="btn btn-dark"><i class="bi bi-arrows-angle-expand"></i></a>
             </form>
             </td>
         </tr>
