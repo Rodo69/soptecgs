@@ -5,7 +5,7 @@
             @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
             @endforeach
-        </ul>
+        </ul> 
     </div>
 @endif
 
@@ -64,7 +64,7 @@
     <br>
 </div>
 
-<input class="btn btn-success" type="submit" Value="{{ $modo }} datos">
+<input class="btn btn-warning" type="submit" Value="{{ $modo }} datos">
 
-<a class="btn btn-primary" href="{{ url('equipos/') }}">Cancelar</a>
+<a class="btn btn-danger" href="{{ url('/bajas') }}">Cancelar</a>
 </div>

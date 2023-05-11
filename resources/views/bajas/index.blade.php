@@ -15,12 +15,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <title>Obsoletos</title>
 </head>
 
 <body>
     <a href="{{url('bajas/create')}}" class="btn btn-warning">Agregar</a>
-    <a href="{{url('bajas/pdf')}}" class="btn btn-dark">PDF</a>
+    <a href="{{url('bajas/pdf')}}" class="btn btn-dark">PDF <i class="bi bi-file-earmark-pdf"></i></a>
 <br>
 
 <table class="table table-light">
@@ -58,6 +59,7 @@
             @csrf    
             {{method_field('DELETE')}}
             <input type="submit" class="btn btn-danger" onClick="return confirm('¿Quieres borrar?')" value="Borrar">
+           <a href="{{route('bajas.show', $equipobaja->id)}}" class="btn btn-light"><i class="bi bi-archive-fill"></i>
             </form>
             </td>
         </tr>

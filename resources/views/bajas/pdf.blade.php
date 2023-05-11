@@ -6,10 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>PDF</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 </head>
 <body>
 <header><img src="imagenes/head.png" alt="450" width="450" style="padding-left:15%  "></header>
-<h2 style="text-align:center"> Lista de equipos obsoletos</h2>
+<h2 class="titulo" style="text-align:center"> Lista de equipos obsoletos</h2>
     <table class="table table-light">
         <thead class="thead-light">
             <tr>
