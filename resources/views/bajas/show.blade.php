@@ -1,6 +1,10 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    @extends('layouts.appinventario')
+    @section('content')
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -15,8 +19,6 @@
             <div class="card-body">
              <img class="card-img-top" src="{{asset('storage').'/'.$obsoleto->foto_obsoleto}}">
             
-            
-          
               <li class="list-group-item">Modelo: {{$obsoleto->modelo}}</li>
               <li class="list-group-item">Marca: {{$obsoleto->marca}}</li>
               <li class="list-group-item">Placa: {{$obsoleto->placa}}</li>
@@ -24,8 +26,10 @@
               <p class="list-group-item">   Descripción: {{$obsoleto->descripcion}}</p>
            
             <a class="btn btn-danger" href="{{ url('/bajas') }}">Volver</a> 
-            <a href="{{url('/bajas/'.$obsoleto->id.'/edit')}}" class="btn btn-warning">Editar</a> 
+            <a href="{{url('/bajas/'.$obsoleto->id.'/edit')}}" class="btn btn-light">Editar</a> 
         </div>
     </div>
+  
 </body>
 </html>
+@endsection

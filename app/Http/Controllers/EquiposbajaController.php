@@ -7,6 +7,8 @@ use App\Models\equiposbaja;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\DB;
+
 class EquiposbajaController extends Controller
 {
     /**
@@ -51,7 +53,7 @@ class EquiposbajaController extends Controller
             'marca'=>'required|string|max:15',
             'placa'=>'required|string|max:10',
             'serie'=>'required|string|max:10',
-            'descripcion'=>'required|string|max:100',
+            'descripcion'=>'required|string|max:50',
             'foto_obsoleto'=>'required|max:10000|mimes:jpeg,png,jpg',
         ];
         $mensaje=[
@@ -105,7 +107,7 @@ class EquiposbajaController extends Controller
             'marca'=>'required|string|max:100',   
             'placa'=>'required|string|max:100',
             'serie'=>'required|string|max:100',
-            'descripcion'=>'required|string|max:100',   
+            'descripcion'=>'required|string|max:50',   
              
         ];
         $mensaje=[

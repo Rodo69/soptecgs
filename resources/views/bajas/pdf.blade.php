@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,8 +10,8 @@
 <body>
 <header><img src="imagenes/head.png" alt="450" width="450" style="padding-left:15%  "></header>
 <h2 class="titulo" style="text-align:center"> Lista de equipos obsoletos</h2>
-    <table class="table table-light">
-        <thead class="thead-light">
+<table class="table">
+    <thead class="thead-dark">
             <tr>
                 <th>-</th> 
                 <br> 
@@ -51,6 +50,6 @@
             @endforeach
         </tbody>
     </table>
-    <footer><img src="imagenes/firmaobsoleto.png"  width="400" style="padding-left:22%; padding-top:95%"></footer>
+    <footer><img src="imagenes/firmaobsoleto.png"  alt="firma"  width="400" style="padding-left:22%; padding-top:95%"></footer>
 </body>
 </html>

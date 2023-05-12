@@ -55,7 +55,7 @@
 </div>
 
 <div class="form-group">
-    <label for="Nombre">Foto</label>
+    <label for="Nombre">Evidencia</label>
     @if (isset($equipo->foto_obsoleto))
         <img class="img-thumbnail img-fluid" src="{{ asset('storage') . '/' . $equipo->foto_obsoleto }}" width="100"
             alt="" srcset="">
@@ -64,7 +64,10 @@
     <br>
 </div>
 
-<input class="btn btn-warning" type="submit" Value="{{ $modo }} datos">
+<input class="btn btn-warning" type="submit" Value="{{ $modo }} ">
 
 <a class="btn btn-danger" href="{{ url('/bajas') }}">Cancelar</a>
+
 </div>
+
+
