@@ -1,3 +1,4 @@
+
 <h2>{{ $modo }} Equipo Obsoleto </h2>
 @if (count($errors) > 0)
     <div class="alert alert-danger" role="alert">
@@ -8,6 +9,7 @@
         </ul> 
     </div>
 @endif
+
 
 <div class="form-group">
     <label for="Nombre">Tipo</label>

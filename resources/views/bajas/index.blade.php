@@ -1,24 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    @extends('layouts.appinventario')
-    @section('content')
-    <div class="container">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-    <title>Obsoletos</title>
-</head>
+    
+    @extends('layouts.appinventario')
+    @section('content')
+    
+    @if(Session::has('mensaje'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{Session::get('mensaje')}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>  
+    </div>
+    @endif
+    
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <a href="{{url('bajas/create')}}" class="btn btn-warning">Agregar</a>
+                <a href="{{url('bajas/pdf')}}" class="btn btn-dark">PDF <i class="bi bi-file-earmark-pdf"></i></a>
+            </div>
+            <div class="col">
+                <form action="{{ route('bajas.index') }}" method="get" class="form-inline justify-content-end">
+                    <div class="input-group">
+                        <input type="text" name="busqueda" class="form-control mr-2" placeholder="Buscar placa o serie...">
+                        <div class="input-group-append">
+                            <button class="btn btn-success" type="submit">Buscar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
 
-<body>
-    <a href="{{url('bajas/create')}}" class="btn btn-warning">Agregar</a>
-    <a href="{{url('bajas/pdf')}}" class="btn btn-dark">PDF <i class="bi bi-file-earmark-pdf"></i></a><br><br>
-
+<br>
     <table class="table" style="text-align:center">
         <thead class="thead-dark">
+
             <tr>
             <th>-</th>
             <th>Evidencia</th>        
@@ -46,18 +68,18 @@
             <td>{{$equipobaja->serie}}</td>
             <td>{{$equipobaja->descripcion}}</td>
             <td> 
-            <a href="{{url('/bajas/'.$equipobaja->id.'/edit')}}" class="btn btn-primary">Editar</a>    | 
-
+            <a href="{{url('/bajas/'.$equipobaja->id.'/edit')}}" class="btn btn-primary">Editar</a>    
             <form action="{{url('/bajas/'.$equipobaja->id)}}" class="d-inline" method="post">
-                @csrf    
-                {{method_field('DELETE')}} 
+            @csrf    
+            {{method_field('DELETE')}} 
            <input type="submit" class="btn btn-danger" onClick="return confirm('¿Quieres borrar?')" value="Borrar">
-    
            <a href="{{route('bajas.show', $equipobaja->id)}}" class="btn btn-dark"><i class="bi bi-arrows-angle-expand"></i></a>
             </form>
             </td>
         </tr>
+    
         @endforeach
+
     </tbody>
 </table>
 {!!$equiposbaja->Links()!!}

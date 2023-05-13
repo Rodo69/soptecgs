@@ -7,20 +7,39 @@ use App\Models\equiposbaja;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Barryvdh\DomPDF\Facade\Pdf;
-use Illuminate\Support\Facades\DB;
+
+
 
 class EquiposbajaController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
 
+
+     public function index(Request $request)
+     {
+         $searchTerm = $request->input('busqueda');
+     
+         $equiposbaja = equiposbaja::query()
+             ->where('placa', 'LIKE', "%$searchTerm%")
+            ->orWhere('serie', 'LIKE', "%$searchTerm%")
+            ->latest('id')
+             ->paginate(5);
+     
+         return view('bajas.index', compact('equiposbaja'))->with('texto', $searchTerm);
+     }
+     
+
+    //public function index(Request $request)
+  //  {
       
-        $datos['equiposbaja']=equiposbaja::paginate(5);
-        return view('bajas.index',$datos);
-    }
+
+        //$datos['equiposbaja']=equiposbaja::paginate(5);
+        //return view('bajas.index',$datos);
+   // }
+
+
 
     public function pdf()
     {
