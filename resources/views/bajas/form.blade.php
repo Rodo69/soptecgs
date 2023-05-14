@@ -1,3 +1,4 @@
+
 <h2>{{ $modo }} Equipo Obsoleto </h2>
 @if (count($errors) > 0)
     <div class="alert alert-danger" role="alert">
@@ -5,9 +6,10 @@
             @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
             @endforeach
-        </ul>
+        </ul> 
     </div>
 @endif
+
 
 <div class="form-group">
     <label for="Nombre">Tipo</label>
@@ -55,7 +57,7 @@
 </div>
 
 <div class="form-group">
-    <label for="Nombre">Foto</label>
+    <label for="Nombre">Evidencia</label>
     @if (isset($equipo->foto_obsoleto))
         <img class="img-thumbnail img-fluid" src="{{ asset('storage') . '/' . $equipo->foto_obsoleto }}" width="100"
             alt="" srcset="">
@@ -64,7 +66,10 @@
     <br>
 </div>
 
-<input class="btn btn-success" type="submit" Value="{{ $modo }} datos">
+<input class="btn btn-warning" type="submit" Value="{{ $modo }} ">
 
-<a class="btn btn-primary" href="{{ url('equipos/') }}">Cancelar</a>
+<a class="btn btn-danger" href="{{ url('/bajas') }}">Cancelar</a>
+
 </div>
+
+

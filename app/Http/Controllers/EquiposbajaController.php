@@ -6,23 +6,45 @@ namespace App\Http\Controllers;
 use App\Models\equiposbaja;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use PDF;
+use Barryvdh\DomPDF\Facade\Pdf;
+
+
+
 class EquiposbajaController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        $datos['equiposbaja']=equiposbaja::paginate(5);
-        return view('bajas.index',$datos);
-    }
+
+
+     public function index(Request $request)
+     {
+         $searchTerm = $request->input('busqueda');
+     
+         $equiposbaja = equiposbaja::query()
+             ->where('placa', 'LIKE', "%$searchTerm%")
+            ->orWhere('serie', 'LIKE', "%$searchTerm%")
+            ->latest('id')
+             ->paginate(5);
+     
+         return view('bajas.index', compact('equiposbaja'))->with('texto', $searchTerm);
+     }
+     
+
+    //public function index(Request $request)
+  //  {
+      
+
+        //$datos['equiposbaja']=equiposbaja::paginate(5);
+        //return view('bajas.index',$datos);
+   // }
+
+
 
     public function pdf()
     {
         $equiposbaja=equiposbaja::paginate();
         $pdf = PDF::loadView('bajas.pdf',['equiposbaja'=>$equiposbaja]);
-      //  $pdf->loadHTML('<h1>Test</h1>');
         return $pdf->stream();
        // return view('bajas.pdf',compact('equiposbaja')); 
     }
@@ -36,15 +58,21 @@ class EquiposbajaController extends Controller
 
     /**La siguiente funcion direcciona a la pagina principal de los equipos obosoletos,generando una consulta general de
     los equipos, asi como un paginado en caso de que el registro de los equipos obsoletos sea mayor a 5*/
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
+
+
+        $request->validate([
+            'serie'=> 'required|max:10',
+            'placa'=> 'required|max:10'
+        ]);
+    
         $campos=[
-            'tipo'=>'required|string|max:100',
-            'modelo'=>'required|string|max:100',
-            'marca'=>'required|string|max:100',
-            'placa'=>'required|string|max:100',
-            'serie'=>'required|string|max:100',
-            'descripcion'=>'required|string|max:100',
+            'tipo'=>'required|string|max:20',
+            'modelo'=>'required|string|max:10',
+            'marca'=>'required|string|max:15',
+            'placa'=>'required|string|max:10',
+            'serie'=>'required|string|max:10',
+            'descripcion'=>'required|string|max:50',
             'foto_obsoleto'=>'required|max:10000|mimes:jpeg,png,jpg',
         ];
         $mensaje=[
@@ -63,9 +91,11 @@ class EquiposbajaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(equiposbaja $equiposbaja)
+    public function show($id)
     {
-        //
+        $obsoleto = equiposbaja::find($id);
+        //dd($obsoleto);
+        return view('bajas.show',compact('obsoleto'));
     }
 
     /**
@@ -82,13 +112,21 @@ class EquiposbajaController extends Controller
   
     public function update(Request $request, $id)
     {
+
+
+        $request->validate([
+            'serie'=> 'required|max:10',
+            'placa'=> 'required|max:10'
+        ]);
+
+
         $campos=[
             'tipo'=>'required|string|max:100',
             'modelo'=>'required|string|max:100',   
             'marca'=>'required|string|max:100',   
             'placa'=>'required|string|max:100',
             'serie'=>'required|string|max:100',
-            'descripcion'=>'required|string|max:100',   
+            'descripcion'=>'required|string|max:50',   
              
         ];
         $mensaje=[

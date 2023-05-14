@@ -32,7 +32,7 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', HomeController::class);
 
-//Route::get('home', [HomeController::class, 'index']);
+Route::get('home', [HomeController::class, 'index']);
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -66,7 +66,7 @@ Route::resource('checklist', ChecklistController::class)->middleware('auth');
 //RUTAS DE EQUIPOSDAÑADOS 
 Route::get('/bajas/create',[EquiposbajaController::class,'create']);
 Route::resource('bajas', EquiposbajaController::class)->middleware('auth');
-
+Route::get('bajas/{obsoletos}',[App\Http\Controllers\EquiposbajaController::class,'show'])->name('bajas.show') ;;
 
 Auth::routes();
 ////AQUI DEFINIMOS LA RUTA A LA CUAL NOS CARGARA LA PAGINA
