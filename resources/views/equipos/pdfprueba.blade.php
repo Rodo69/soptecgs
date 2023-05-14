@@ -9,7 +9,7 @@
 </head>
 <body>
     <header><img src="imagenes/head.png" alt="450" width="450" style="padding-left:30%; text-align:center ">
-        <br>Reporte de equipo registrado dentro de sucursal.</br></header>
+        <br>Solicitud registro de datos</header>
     <table class="table table-striped">
 
         <thead>

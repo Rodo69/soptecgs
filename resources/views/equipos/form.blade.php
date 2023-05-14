@@ -80,7 +80,7 @@
         value="{{ isset($equipo->nombre_equipo) ? $equipo->nombre_equipo : old('nombre_equipo') }}" id="nombre_equipo">
     <br>
 </div>
-<input class="btn btn-success" type="submit" Value="{{ $modo }} datos">
+<input class="btn btn-success" type="submit" Value="{{ $modo }} datos" >
 <a class="btn btn-primary" href="{{ url('equipos/') }}">Cancelar</a>
 </div>
 </body>

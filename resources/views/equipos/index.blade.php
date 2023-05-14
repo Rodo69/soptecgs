@@ -18,8 +18,8 @@
     <title>EQUIPOS</title>
 </head>
 <body>
-    <a href="{{url('equipos/create')}}" class="btn btn-success">Registrar Nuevo Equipo</a>
-    <a href="{{url('equipo/pdf')}}" class="btn btn-success">GenerarPDF</a>
+    <a href="{{url('equipos/create')}}" class="btn btn-success" target="_blank">Registrar Nuevo Equipo</a>
+    <a href="{{url('equipo/pdf')}}" class="btn btn-success" target="_blank">GenerarPDF</a>
 <br><br>
 <table class="table table-light">
     <thead class="thead-light">
@@ -52,8 +52,8 @@
             <td>{{$equipo->nombre_equipo}}</td>
             <td>
             <a href="{{url('/equipos/'.$equipo->id.'/edit')}}" class="btn btn-warning">Editar</a>    | 
-            <a href="{{url('/equipo/'.$equipo->id)}}" class="btn btn-warning">PDF B</a>    |  
-            <a href="{{url('/equipo/'.$equipo->id)}}" class="btn btn-warning">PDF A</a>    |  
+            {{-- <a href="{{url('/equipo/'.$equipo->id)}}" class="btn btn-warning">PDF B</a>    |   --}}
+            <a href="{{url('/equipo/'.$equipo->id)}}" class="btn btn-warning" target="_blank">Generar Reporte</a>    |  
             <form action="{{url('/equipos/'.$equipo->id)}}" class="d-inline" method="post">
             @csrf    
             {{method_field('DELETE')}}
@@ -66,6 +66,7 @@
 </table>
 {!!$equipos->Links()!!}
 </div>
-@endsection
+
 </body>
+@endsection
 </html>

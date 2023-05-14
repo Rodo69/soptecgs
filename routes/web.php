@@ -78,4 +78,7 @@ Route::get('equipo/pdf',[EquiposController::class,'pdf'])->name('equipos.pdf');
 
 Route::get('equipo/{equipo}',[EquiposController::class,'pdfbaja'])->name('equipo.pdfbaja');
 Route::get('equipo/{equipo}',[EquiposController::class,'pdfalta'])->name('equipo.pdfalta');
+Route::get('equipos/{equipo}',[EquiposController::class,'pdfalta'])->name('equipos.pdfprueba');
+//Route::get('equipo/{equipo}',[EquiposController::class,'pdfalta'])->name('equipo.pdfalta');
+//Route::get('/equipos/pdfalta',[EquiposController::class,'store'])->name('equipos.pdfalta');
 
