@@ -17,7 +17,7 @@ class EquiposController extends Controller
      */
     public function index()
     {
-        $datos['equipos']=Equipos::paginate(5);
+        $datos['equipos']=Equipos::all();
        //s $datospdf['equipo']=Equipos::all(5);
         return view('equipos.index',$datos);
     }
