@@ -51,7 +51,7 @@ class ActividadesController extends Controller
     {
         $actividades=actividades::find($id);
 
-        $actividades->start=Carbon::createFromFormat('Y-m-d H:i:s', $actividades->star)->format('Y-m-d');
+        $actividades->start=Carbon::createFromFormat('Y-m-d H:i:s', $actividades->start)->format('Y-m-d');
         $actividades->end=Carbon::createFromFormat('Y-m-d H:i:s', $actividades->end)->format('Y-m-d');
 
         return response()->json($actividades);

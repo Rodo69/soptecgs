@@ -23,5 +23,16 @@ class equipos extends Model
     {
         return $this->belongsTo(Empleados::class,'empleado_asig');
     }
+    protected $fillable = [
+        'tipo', 
+        'marca', 
+        'modelo',
+        'serie',
+        'placa',
+        'empleado_asig',
+        'sucursal_asig',
+        'unidad_asig',
+        'nombre_equipo'
+    ]; 
 
 }

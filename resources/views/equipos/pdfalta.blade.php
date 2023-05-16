@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 </head>
 <body>
-    <header><img src="imagenes/head.png" alt="450" width="450" style="padding-left:30%; text-align:center "><br>Solicitud alta equipo</header>
+    <header><img src="imagenes/head.png" alt="450" width="450" style="padding-left:30%; text-align:center ">
+        <br>Reporte de equipo registrado dentro de sucursal.</br></header>
     <table class="table table-striped">
 
         <thead>

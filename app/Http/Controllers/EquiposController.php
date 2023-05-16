@@ -17,7 +17,8 @@ class EquiposController extends Controller
      */
     public function index()
     {
-        $datos['equipos']=Equipos::paginate(5);
+        $datos['equipos']=Equipos::all();
+       //s $datospdf['equipo']=Equipos::all(5);
         return view('equipos.index',$datos);
     }
 
@@ -45,8 +46,10 @@ class EquiposController extends Controller
         //dd($empleado);
         //return view('empleado.pdfbaja',compact('empleado'));
         $pdf=PDF::loadView('equipos.pdfalta',['equipo'=>$equipo]);
-        return $pdf->setPaper('a4','landscape')->stream();
+        return $pdf->setPaper('a4','landscape')->stream('pdfalta.pdf');
     }
+
+   
     /**
      * Show the form for creating a new resource.
      */
@@ -81,8 +84,18 @@ class EquiposController extends Controller
         ];
         $this->validate($request,$campos,$mensaje);
         $datosEquipo= request()->except('_token');
-        Equipos::insert($datosEquipo);
-        return redirect('equipos')->with('mensaje','Equipo Agregado con exito');
+//        $equipo=Equipos::FindOrFail($id);
+        $equipo = Equipos::create($datosEquipo);
+        //$equipo = Equipos::where('id','=',$id)->insert($datosEquipo);
+        //$equipo=Equipos::FindOrFail($id);
+        return redirect()->route('equipos.pdfprueba',$equipo->id);
+        //return redirect('equipos')->with('mensaje','Equipo Agregado con exito');
+        
+    }
+
+    public function prueba(equipos $equipo)
+    {
+        return view('equipos.pdfprueba', compact('equipo'));
     }
 
     /**
@@ -149,11 +162,14 @@ class EquiposController extends Controller
      */
     public function destroy($id)
     {
-        $equipo=Equipos::FindOrFail($id);
         
-        if(Storage::delete('public/'.$equipo->foto_equipo)){
-            Equipos::destroy($id);
-        }
-        return redirect('equipos')->with('mensaje','Equipo Borrado');
+        
+        // if(Storage::delete('public/'.$equipo->foto_equipo)){
+        //     Equipos::destroy($id);
+        // }
+        $equipo=Equipos::FindOrFail($id);
+        return redirect()->route('equipos.pdfprueba',$equipo->id);
+        Equipos::destroy($id);
+        //return redirect('equipos')->with('mensaje','Equipo Borrado');
     }
 }
