@@ -34,8 +34,8 @@ Route::get('/', HomeController::class);
 
 Route::get('home', [HomeController::class, 'index']);
 
-// Route::get('/', function () {
-//     return view('welcome');
+//  Route::get('/', function () {
+//      return view('auth.login');
 // });
 
 Route::get('bajas/pdf',[App\Http\Controllers\EquiposbajaController::class,'pdf'])->name('bajas.pdf') ;
@@ -82,3 +82,13 @@ Route::get('equipos/{equipo}',[EquiposController::class,'pdfalta'])->name('equip
 //Route::get('equipo/{equipo}',[EquiposController::class,'pdfalta'])->name('equipo.pdfalta');
 //Route::get('/equipos/pdfalta',[EquiposController::class,'store'])->name('equipos.pdfalta');
 
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
