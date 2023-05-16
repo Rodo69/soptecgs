@@ -73,6 +73,7 @@ class EquiposbajaController extends Controller
             'placa'=>'required|string|max:10',
             'serie'=>'required|string|max:10',
             'descripcion'=>'required|string|max:50',
+            'fecha_registro'=>'required|date|max:50',
             'foto_obsoleto'=>'required|max:10000|mimes:jpeg,png,jpg',
         ];
         $mensaje=[
@@ -126,6 +127,7 @@ class EquiposbajaController extends Controller
             'marca'=>'required|string|max:100',   
             'placa'=>'required|string|max:100',
             'serie'=>'required|string|max:100',
+            'fecha_registro'=>'required|date|max:50',
             'descripcion'=>'required|string|max:50',   
              
         ];
