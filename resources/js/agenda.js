@@ -18,10 +18,10 @@
         events:'http://127.0.0.1:8000/actividades/mostrar',
 
         dateClick:function(info){
-           // formulario.reset();
+           formulario.reset();
 
-            // formulario.start.value=info.dateStr;
-            // formulario.end.value=info.dateStr;
+            formulario.start.value=info.dateStr;
+            formulario.end.value=info.dateStr;
             
             $("#actividad").modal("show");
             
@@ -31,15 +31,15 @@
             var actividades=info.event;
             console.log(actividades);
 
-            axios.get("http://127.0.0.1:8000/actividades/"+info.event.id).
+            axios.post('http://127.0.0.1:8000/actividades/editar/'+info.event.id).
             then(
                 (respuesta)=>{
 
-                    //formulario.id.value=respuesta.data.id;
-                     formulario.title.valueOf=respuesta.data.title;
-                     formulario.color.value=respuesta.data.color;
-                     formulario.start.value=respuesta.data.start;
-                     formulario.end.value=respuesta.data.end;
+                   // formulario.id.value=respuesta.data.id;
+                    formulario.title.value=respuesta.data.title;
+                    formulario.color.value=respuesta.data.color;
+                    formulario.start.value=respuesta.data.start;
+                    formulario.end.value=respuesta.data.end;
 
                     $("#actividad").modal("show");
                 }
