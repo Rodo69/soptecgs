@@ -18,10 +18,10 @@ document.addEventListener('DOMContentLoaded', function () {
         events: 'http://127.0.0.1:8000/actividades/mostrar',
 
         dateClick:function(info){
-           // formulario.reset();
+           formulario.reset();
 
-            // formulario.start.value=info.dateStr;
-            // formulario.end.value=info.dateStr;
+            formulario.start.value=info.dateStr;
+            formulario.end.value=info.dateStr;
             
             $("#actividad").modal("show");
 
@@ -35,8 +35,8 @@ document.addEventListener('DOMContentLoaded', function () {
             then(
                 (respuesta)=>{
 
-                    //formulario.id.value=respuesta.data.id;
-                     formulario.title.valueOf=respuesta.data.title;
+                     //formulario.id.value=respuesta.id;
+                     formulario.title.value=respuesta.data.title;
                      formulario.color.value=respuesta.data.color;
                      formulario.start.value=respuesta.data.start;
                      formulario.end.value=respuesta.data.end;

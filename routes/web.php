@@ -32,11 +32,8 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', HomeController::class);
 
-Route::get('home', [HomeController::class, 'index']);
-
-//  Route::get('/', function () {
-//      return view('auth.login');
-// });
+////AQUI DEFINIMOS LA RUTA A LA CUAL NOS CARGARA LA PAGINA
+// Route::get('/home', [HomeController::class, 'index'])->middleware('auth');
 
 Route::get('bajas/pdf',[App\Http\Controllers\EquiposbajaController::class,'pdf'])->name('bajas.pdf') ;
 
@@ -69,8 +66,7 @@ Route::resource('bajas', EquiposbajaController::class)->middleware('auth');
 Route::get('bajas/{obsoletos}',[App\Http\Controllers\EquiposbajaController::class,'show'])->name('bajas.show') ;;
 
 Auth::routes();
-////AQUI DEFINIMOS LA RUTA A LA CUAL NOS CARGARA LA PAGINA
- Route::get('/home', [HomeController::class, 'index'])->name('home');
+
 //RUTA DE PDF EMPLEADOS Y EQUIPOS
 Route::get('empleados/pdf',[EmpleadosController::class,'pdf'])->name('empleados.pdf');
 Route::get('equipo/pdf',[EquiposController::class,'pdf'])->name('equipos.pdf');
