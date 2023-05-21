@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('placa');
             $table->string('serie');
             $table->string('descripcion');
+            $table->date('fecha_registro');
             $table->string('foto_obsoleto');
             $table->timestamps();
         });

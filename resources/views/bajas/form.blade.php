@@ -1,5 +1,5 @@
+<h2 class="text-center">{{ $modo }} Equipo Obsoleto</h2>
 
-<h2>{{ $modo }} Equipo Obsoleto </h2>
 @if (count($errors) > 0)
     <div class="alert alert-danger" role="alert">
         <ul>
@@ -47,6 +47,14 @@
         id="serie">
     <br>
 </div>
+
+<div class="form-group">
+    <label for="fecha_registro">Fecha de Registro</label>
+    <input type="date" class="form-control" name="fecha_registro"
+    value="{{ isset($equipo->fecha_registro) ? $equipo->fecha_registro : old('fecha_registro') }}"
+    id="fecha_registro">
+</div>
+
 
 <div class="form-group">
     <label for="Nombre">Descripción </label>

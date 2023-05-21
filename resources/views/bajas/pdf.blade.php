@@ -12,7 +12,7 @@
     <img src="imagenes/head.png" alt="450" width="450">
 </header>
 <h2 class="titulo text-center">Lista de equipos obsoletos</h2>
-<table class="table table-striped text-center">
+<table class="table table-striped table-sm text-center">
     <thead class="thead-dark">
         <tr>
             <th>-</th>
@@ -21,6 +21,7 @@
             <th>Marca</th>
             <th>Placa</th>
             <th>Serie</th>
+            <th>Fecha de registro</th>
             <th>Descripción</th>
         </tr>
     </thead>
@@ -33,7 +34,9 @@
             <td>{{$equipobaja->marca}}</td>
             <td>{{$equipobaja->placa}}</td>
             <td>{{$equipobaja->serie}}</td>
+            <td>{{$equipobaja->fecha_registro}}</td>
             <td>{{$equipobaja->descripcion}}</td>
+            
         </tr>
         @endforeach
     </tbody>

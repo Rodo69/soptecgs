@@ -9,7 +9,7 @@
     
     @extends('layouts.appinventario')
     @section('content')
-    
+
     @if(Session::has('mensaje'))
     <div class="alert alert-success alert-dismissible fade show" role="alert">
         {{Session::get('mensaje')}}
@@ -18,7 +18,7 @@
         </button>  
     </div>
     @endif
-    
+  
     <div class="container">
         <div class="row">
             <div class="col">
@@ -31,6 +31,7 @@
                         <input type="text" name="busqueda" class="form-control mr-2" placeholder="Buscar placa o serie...">
                         <div class="input-group-append">
                             <button class="btn btn-success" type="submit">Buscar</button>
+                            <a href="{{ route('bajas.index') }}" class="btn btn-secondary ml-2">Cancelar</a>
                         </div>
                     </div>
                 </form>
@@ -49,6 +50,7 @@
             <th>Marca</th>
             <th>Placa</th>
             <th>Serie</th>
+            <th>Fecha de registro</th>
             <th>Descripción</th>
             <th>Acciones</th>
         </tr>
@@ -66,15 +68,28 @@
             <td>{{$equipobaja->marca}}</td>
             <td>{{$equipobaja->placa}}</td>
             <td>{{$equipobaja->serie}}</td>
+            <td>{{$equipobaja->fecha_registro}}</td>
             <td>{{$equipobaja->descripcion}}</td>
             <td> 
-            <a href="{{url('/bajas/'.$equipobaja->id.'/edit')}}" class="btn btn-primary">Editar</a>    
+
+                <a href="{{url('/bajas/'.$equipobaja->id.'/edit')}}" class="btn btn-primary">
+                    <i class="bi bi-pencil-fill"></i> 
+                </a>
+                
             <form action="{{url('/bajas/'.$equipobaja->id)}}" class="d-inline" method="post">
-            @csrf    
-            {{method_field('DELETE')}} 
-           <input type="submit" class="btn btn-danger" onClick="return confirm('¿Quieres borrar?')" value="Borrar">
-           <a href="{{route('bajas.show', $equipobaja->id)}}" class="btn btn-dark"><i class="bi bi-arrows-angle-expand"></i></a>
+                @csrf
+                {{method_field('DELETE')}}
+                <button type="submit" class="btn btn-danger" onClick="return confirm('¿Quieres borrar?')">
+                    <i class="bi bi-trash"></i> 
+                </button>
+                <a href="{{route('bajas.show', $equipobaja->id)}}" class="btn btn-dark">
+                    <i class="bi bi-arrows-angle-expand"></i> 
+                </a>
             </form>
+
+
+
+            
             </td>
         </tr>
     
@@ -83,7 +98,9 @@
     </tbody>
 </table>
 {!!$equiposbaja->Links()!!}
+
 </div>
 @endsection
+
 </body>
 </html>
