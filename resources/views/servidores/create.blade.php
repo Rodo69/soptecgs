@@ -1,8 +1,8 @@
-@extends('layouts.fondo')
+@extends('layouts.appinventario')
 
 @section('title', 'Alta Servidor')
 
-@section('micontent')
+@section('content')
 
 <body>
     <div class="grid md:grid-cols-[2fr,3fr] gap-6 md:gap-12 mt-6">

@@ -44,6 +44,7 @@ Route::get('/actividades/create', [ActividadesController::class,'create']);
 Route::get('/actividades/mostrar',[App\Http\Controllers\ActividadesController::class,'show']);
 Route::post('/actividades/agregar',[App\Http\Controllers\ActividadesController::class,'store']);
 Route::post('/actividades/editar/{id}',[App\Http\Controllers\ActividadesController::class,'edit']);
+Route::post('/actividades/actualizar/{actividades}',[App\Http\Controllers\ActividadesController::class,'update']);
 Route::post('/actividades/borrar/{id}',[App\Http\Controllers\ActividadesController::class,'destroy']);
 Route::resource('actividades', ActividadesController::class)->middleware('auth');
 

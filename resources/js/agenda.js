@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
             center: 'title',
             right: 'dayGridMonth,timeGridWeek,timeGridDay'
         },
-        events: 'http://127.0.0.1:8000/actividades/mostrar',
+        events: '/actividades/mostrar',
 
         dateClick:function(info){
            formulario.reset();
@@ -26,16 +26,15 @@ document.addEventListener('DOMContentLoaded', function () {
             $("#actividad").modal("show");
 
         },
-        eventClick: function (info) {
+        eventClick:function (info) {
 
             var actividades = info.event;
             console.log(actividades);
 
-            axios.get("http://127.0.0.1:8000/actividades/"+info.event.id).
+            axios.post("/actividades/editar/"+info.event.id).
             then(
                 (respuesta)=>{
 
-                     //formulario.id.value=respuesta.id;
                      formulario.title.value=respuesta.data.title;
                      formulario.color.value=respuesta.data.color;
                      formulario.start.value=respuesta.data.start;
@@ -59,16 +58,23 @@ document.addEventListener('DOMContentLoaded', function () {
     calendar.render();
 
     document.getElementById("btnGuardar").addEventListener("click", function () {
-        enviarDatos("http://127.0.0.1:8000/actividades/agregar");
+        enviarDatos("/actividades/agregar");
     });
 
     document.getElementById("btnEliminar").addEventListener("click", function () {
-        enviarDatos("http://127.0.0.1:8000/actividades/borrar/"+formulario.id.value);
+        enviarDatos("/actividades/borrar/"+formulario.id.value);
+    });
+
+    document.getElementById("btnEditar").addEventListener("click", function () {
+        enviarDatos("/actividades/actualizar/"+formulario.id.value);
     });
 
     function enviarDatos(url) {
         const datos = new FormData(formulario);
-        axios.post(url, datos).
+
+        const nuevaURL=baseURL+url;
+
+        axios.post(nuevaURL, datos).
             then(
                 (respuesta) => {
                     calendar.refetchEvents();

@@ -23,6 +23,7 @@
         <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/locales-all.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
     
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     
@@ -68,6 +69,7 @@
         @stack('modals')
 
         @livewireScripts
+        
         @vite(['resources/sass/app.scss', 'resources/js/agenda.js'])
     </body>
 </html>

@@ -23,6 +23,10 @@
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/locales-all.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
+    <script type="text/javascript">
+        var baseURL= {!! json_encode(url('/')) !!}
+    </script>
+
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
     <!-- Scripts -->

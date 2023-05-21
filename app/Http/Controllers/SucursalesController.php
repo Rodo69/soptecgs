@@ -33,16 +33,15 @@ class SucursalesController extends Controller
         //validar datos
         
         $campos=[
-            'tipo'=>'required|string|max:100',
-            'marca'=>'required|string|max:100',
-            'modelo'=>'required|string|max:100',
-            'serie'=>'required|string|max:100',
-            'placa'=>'required|string|max:100',
-            'empleado_asig'=>'required|string|max:100',
-            'sucursal_asig'=>'required|string|max:100',
-            'unidad_asig'=>'required|string|max:100',
-            'nombre_equipo'=>'required|string|max:100',
-            'foto_equipo'=>'required|max:10000|mimes:jpeg,png,jpg',
+            'nombre'=>'required|string|max:100',
+            'direccion'=>'required|string|max:100',
+            'ingeniero_zona'=>'required|string|max:100',
+            'telefono_ing'=>'required|string|max:100',
+            'gerente_tienda'=>'required|string|max:100',
+            'telefono_gerente'=>'required|string|max:100',
+            'banco_azteca'=>'required|string|max:100',
+            'presta_prenda'=>'required|string|max:100',
+            'comercio'=>'required|string|max:100',
         ];
         $mensaje=[
             'required'=>'El campo :attribute es requerido',

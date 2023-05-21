@@ -1,4 +1,4 @@
-@extends('layouts.fondo')
+@extends('layouts.appinventario')
 
 @section('title', 'Modificar')
 

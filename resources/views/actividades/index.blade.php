@@ -25,6 +25,22 @@
                       <input type="text" class="form-control" name="title" id="title" aria-describedby="helpId" placeholder="Escribe el titulo de la actividad">
                     </div>
 
+                    {{-- <label class="inline-block text-sm font-medium text-gray-700"
+                        for=""> Sucursal asignada </label>
+
+<br>
+                        <select name="patio" id="">
+                            <option value="">patio</option>
+                        </select> --}}
+
+                        {{-- <select name="sucursalasig"  class="block w-full h-10 transition duration-75 border-gray-300 rounded-lg shadow-sm focus:ring-1 focus:ring-inset focus:ring-blue-600 focus:border-blue-600">
+                            @foreach ($sucursales as $sucursal)
+                            <option value="{{old('id',$sucursal->id )}}" @selected(old('nombre', $sucursal->nombre) == $sucursal)> {{$sucursal->nombre}} </option>
+
+                                //// <option value="{{$sucursal->id}}">{{$sucursal->nombre}}1</option> 
+                            @endforeach
+                        </select> --}}
+
                     <div class="form-group">
                         <label for="color">Color</label>
                         <input type="color" class="form-control" name="color" id="color" aria-describedby="helpId" placeholder="">

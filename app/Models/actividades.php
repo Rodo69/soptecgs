@@ -13,7 +13,7 @@ class actividades extends Model
         'title'=>'required',
         'color'=>'required',
         'start'=>'required',
-        'end'=>'required',
+        'end'=>'required'
     ];
 
     protected $fillable = [
