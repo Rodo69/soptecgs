@@ -81,8 +81,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     $("#actividad").modal("hide");
                 }
             ).catch(
-                (error => { if (error.response) { console.log(error.response.data); } })
+                (error =>{if(error.response){console.log(error.response.data);}})
             )
     }
-
 });

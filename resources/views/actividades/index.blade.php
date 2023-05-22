@@ -4,7 +4,11 @@
 <title>Agenda</title>
 {{-- <link rel="shortcut icon" href="imagenes/gs.png" type="image/x-icon"> --}}
 <div class="container">
-    <div id='agenda'></div> 
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-8" id='agenda'></div> 
+        <div class="col"></div>
+    </div>
 </div>
 
 <!-- Modal -->

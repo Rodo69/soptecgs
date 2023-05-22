@@ -20,7 +20,6 @@ class actividades extends Model
     'title', 
     'color', 
     'start',
-    'end'
+    'end',
 ]; 
-   
 }

@@ -63,9 +63,11 @@ class ActividadesController extends Controller
     public function update(Request $request, actividades $actividades)
     {
         request()->validate(actividades::$rules);
+
         $actividades->update($request->all());
 
         return response()->json($actividades);
+
     }
 
     /**
@@ -75,7 +77,7 @@ class ActividadesController extends Controller
     {
         $actividades=actividades::find($id);
         $actividades->delete();
-        
-        return response()->json($actividades);
+
+        return view('actividades.index');
     }
 }
