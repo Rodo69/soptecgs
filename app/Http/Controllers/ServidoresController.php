@@ -18,11 +18,9 @@ class ServidoresController extends Controller
      */
     public function index()
     {
-      //  $datos = servidores::all();
-        //$servidores = servidores::orderBy('id', 'desc')->paginate(9);
-       // return view('servidores.index', $servidores);
+       $sucursales=sucursales::all();
        $datos['servidores']=servidores::orderBy('id', 'desc')->paginate(5);
-       return view('servidores.index',$datos);
+       return view('servidores.index',$datos, compact('sucursales'));
     }
 
     /**
@@ -58,7 +56,7 @@ class ServidoresController extends Controller
         ]);
          $servidor->save();  
 
-        return redirect()->route('servidores.index');
+        return redirect()->route('servidores.index')->with('mensaje','servidor Agregado con exito');
     }
 
     /**
@@ -95,34 +93,18 @@ class ServidoresController extends Controller
      */
     public function update(StoreServidor $request, $id)
     {
-/*         if($request->hasFile('imagen')){
+        $request->hasFile('imagen');
+        $datosServidor= request()->except(['_token','_method']);
+
+        if($request->hasFile('imagen')){
             $servidor=servidores::FindOrFail($id);
-           Storage::delete('public/'.$servidor->imagen);
-            $servidor['imagen']=$request->file('imagen')->store('uploads','public');
+            Storage::delete('public/'.$servidor->imagen);
+            $datosServidor['imagen']=$request->file('imagen')->store('uploads','public');
         }
-        
+        servidores::where('id','=',$id)->update($datosServidor);
         $servidor=servidores::FindOrFail($id);
         //return view('empleado.edit',compact('empleado'));
-        return redirect()->route('servidores.index', $id); */
-
-        $imagen = $request->file('imagen')->store('public/imagenes'); //metodo
-
-        //$servidor = servidores::create($request->all());
-
-        $servidor=servidores::findOrFail($id);
-             $servidor->nombre = $request->nombre;
-             $servidor->sucursalasig = $request->sucursalasig;
-             $servidor->ip = $request->ip;
-             $servidor->mascara = $request->mascara;
-             $servidor->gateway = $request->gateway;
-             $servidor->dns = $request->dns;
-             $servidor->imagen = $imagen = Storage::url($imagen);
-             $servidor->status = $request->status;
-
-        $servidor->save();  
-
-        $servidor->update($request->all());
-        return redirect()->route('servidores.index', $id);
+        return redirect('servidores')->with('mensaje','Servidor modificado');
     }
     
 
@@ -139,6 +121,6 @@ class ServidoresController extends Controller
         
             Servidores::destroy($id);
         
-        return redirect('servidores')->with('mensaje','Empleado Borrado');
+        return redirect('servidores')->with('mensaje','Servidor Borrado');
     }
 }

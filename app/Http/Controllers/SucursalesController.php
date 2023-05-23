@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\categoria;
 use App\Models\sucursales;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -22,6 +23,7 @@ class SucursalesController extends Controller
      */
     public function create()
     {
+        $categoria=categoria::all();
         return view('sucursales.create');
     }
 
@@ -69,6 +71,7 @@ class SucursalesController extends Controller
      */
     public function edit($id)
     {
+        $categoria=categoria::all();
         $sucursal=sucursales::FindOrFail($id);
         return view('sucursales.edit',compact('sucursal'));
     }
