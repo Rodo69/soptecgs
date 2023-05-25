@@ -40,7 +40,7 @@
                <label class="inline-block text-sm font-medium text-gray-700"
                    for=""> Sucursal asignada </label>
 
-                   <select name="sucursalasig"  class="block w-full h-10 transition duration-75 border-gray-300 rounded-lg shadow-sm focus:ring-1 focus:ring-inset focus:ring-blue-600 focus:border-blue-600">
+                   <select name="sucursalasig" >
                        @foreach ($sucursales as $sucursal)
                        <option value="{{old('id',$sucursal->id )}}" @selected(old('nombre', $sucursal->nombre) == $sucursal)> {{$sucursal->nombre}} </option>
 

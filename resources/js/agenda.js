@@ -16,6 +16,9 @@ document.addEventListener('DOMContentLoaded', function () {
             right: 'dayGridMonth,timeGridWeek,timeGridDay'
         },
         events: '/actividades/mostrar',
+        selectable:true,
+        selectHelper:true,
+    
 
         dateClick:function(info){
            formulario.reset();
@@ -52,7 +55,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     )
                 )
         }
-
     });
 
     calendar.render();
@@ -62,11 +64,11 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     document.getElementById("btnEliminar").addEventListener("click", function () {
-        enviarDatos1("/actividades/borrar/"+formulario.id.value);
+        enviarDatos("/actividades/borrar/"+formulario.id.value);
     });
 
     document.getElementById("btnEditar").addEventListener("click", function () {
-        enviarDatos2("/actividades/actualizar/"+formulario.id.value);
+        enviarDatos("/actividades/actualizar/"+formulario.id.value);
     });
 
     function enviarDatos(url) {
@@ -75,38 +77,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const nuevaURL=baseURL+url;
 
         axios.post(nuevaURL, datos).
-            then(
-                (respuesta) => {
-                    calendar.refetchEvents();
-                    $("#actividad").modal("hide");
-                }
-            ).catch(
-                (error =>{if(error.response){console.log(error.response.data);}})
-            )
-    }
-
-    function enviarDatos1(url) {
-        const datos = new FormData(formulario);
-
-        const nuevaURL=baseURL+url;
-
-        axios.delete(nuevaURL, datos).
-            then(
-                (respuesta) => {
-                    calendar.refetchEvents();
-                    $("#actividad").modal("hide");
-                }
-            ).catch(
-                (error =>{if(error.response){console.log(error.response.data);}})
-            )
-    }
-
-    function enviarDatos2(url) {
-        const datos = new FormData(formulario);
-
-        const nuevaURL=baseURL+url;
-
-        axios.put(nuevaURL, datos).
             then(
                 (respuesta) => {
                     calendar.refetchEvents();

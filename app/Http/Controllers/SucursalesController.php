@@ -23,7 +23,7 @@ class SucursalesController extends Controller
      */
     public function create()
     {
-        $categoria=categoria::all();
+        $sucursales=sucursales::all();
         return view('sucursales.create');
     }
 
@@ -54,8 +54,9 @@ class SucursalesController extends Controller
         if($request->hasFile('imagen')){
             $datosSucursal['imagen']=$request->file('imagen')->store('uploads','public');
         }
+        $sucursales=sucursales::all();
         Sucursales::insert($datosSucursal);
-        return redirect('sucursales')->with('mensaje','Empleado Agregado con exito');
+        return redirect('sucursales')->with('mensaje','Sucursal Agregado con exito');
     }
 
     /**
@@ -71,7 +72,7 @@ class SucursalesController extends Controller
      */
     public function edit($id)
     {
-        $categoria=categoria::all();
+        $sucursales=sucursales::all();
         $sucursal=sucursales::FindOrFail($id);
         return view('sucursales.edit',compact('sucursal'));
     }

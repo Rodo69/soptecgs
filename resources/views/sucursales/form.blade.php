@@ -56,6 +56,7 @@
     <input type="file" class="form-control" Name="imagen" value="{" id="imagen">
     <br>
 </div>
+<h5>:)</h5>
 <div class="form-group">
     <label for="Nombre">Unidad Negocio</label>
     <input type="text" class="form-control" name="banco_azteca"
@@ -64,7 +65,7 @@
 </div>
 <div class="form-group">
     <label for="Nombre">Unidad Negocio</label>
-    <input type="text" class="form-control" name="presta_prenda" placeholder="jhh"
+    <input type="text" class="form-control" name="presta_prenda" placeholder=""
         value="{{ isset($sucursal->presta_prenda) ? $sucursal->presta_prenda : old('presta_prenda') }}" id="presta_prenda">
     <br>
 </div>

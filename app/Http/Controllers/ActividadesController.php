@@ -72,10 +72,9 @@ class ActividadesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        $actividades=actividades::find($id);
-        $actividades->delete();
+        $actividades=actividades::find($request->id)->delete();
         
         return response()->json($actividades);
     }
