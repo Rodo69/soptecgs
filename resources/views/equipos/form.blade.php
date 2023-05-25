@@ -17,22 +17,25 @@
         </ul>
     </div>
 @endif
-<div class="form-group">
-    <label for="Nombre">Tipo</label>
+<div class="form-group"  style="display: inline-flex;">
+    <label for="Nombre" style="margin-right:20px">Tipo</label>
     <input type="text" class="form-control" name="tipo"
-        value="{{ isset($equipo->tipo) ? $equipo->tipo : old('tipo') }}" id="tipo">
+        value="{{ isset($equipo->tipo) ? $equipo->tipo : old('tipo') }}" id="tipo" style="width: 30%;  margin-right:50px;">
+        <label for="Nombre">Marca</label>
+    <input type="text" class="form-control" name="marca"
+        value="{{ isset($equipo->marca) ? $equipo->marca : old('marca') }}" id="marca" style="width: 30%; ">
 </div>
-<div class="form-group">
+{{-- <div class="form-group" >
     <label for="Nombre">Marca</label>
     <input type="text" class="form-control" name="marca"
-        value="{{ isset($equipo->marca) ? $equipo->marca : old('marca') }}" id="marca">
-</div>
+        value="{{ isset($equipo->marca) ? $equipo->marca : old('marca') }}" id="marca" style="width: 30%; background-color:black; display:inline-flex;">
+</div> --}}
 <div class="form-group">
     <label for="Nombre">Modelo</label>
     <input type="text" class="form-control" name="modelo"
         value="{{ isset($equipo->modelo) ? $equipo->modelo : old('modelo') }}" id="modelo">
 </div>
-<div class="form-group">
+<div class="form-group"> 
     <label for="Nombre">Serie</label>
     <input type="text" class="form-control" name="serie"
         value="{{ isset($equipo->serie) ? $equipo->serie : old('serie') }}" id="serie">
