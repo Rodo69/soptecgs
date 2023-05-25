@@ -1,68 +1,81 @@
-<!DOCTYPE html>
-<html lang="en">
+
+@extends('layouts.appinventario')
+@section('content')
 <head>
-    @extends('layouts.appinventario')
-    @section('content')
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    
+</head>
     @if(Session::has('mensaje'))
     <div class="alert alert-success alert-dismissible fade show" role="alert">
-    {{Session::get('mensaje')}}
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+        {{Session::get('mensaje')}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
-        </button>
+        </button>  
     </div>
     @endif
+  
     <div class="container">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <a href="{{url('checklist/create')}}" class="btn btn-warning">Agregar Mantenimineto</a>
-<br><br>
-
-<table class="table table-light">
-    <thead class="thead-light">
-        <tr>
-            <th>#</th>
-            <th>Sucursal</th>        
-            <th>Num. Sucursal</th>
-            <th>Gerente de tienda</th>
+        <div class="row">
+            <div class="col">
+                <a href="{{url('bajas/create')}}" class="btn btn-warning">Agregar</a>
+             
+            </div>
+            <div class="col">
+                <form action="{{ route('bajas.index') }}" method="get" class="form-inline justify-content-end">
+                    <div class="input-group">
+                        <input type="text" name="busqueda" class="form-control mr-2" placeholder="Buscar placa o serie...">
+                        <div class="input-group-append">
+                            <button class="btn btn-success" type="submit">Buscar</button>
+                            <a href="{{ route('bajas.index') }}" class="btn btn-secondary ml-2">Cancelar</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+<br>
+    <table class="table" style="text-align:center">
+        <thead class="thead-dark">
+            <tr>
             <th>Foto fachada</th>
-            <th>Acciones</th>
+            <th>Nombre</th>        
+            <th>Fecha de mantenimiento</th>  
+            
+            <th>Acciones</th>   
         </tr>
     </thead>
+
     <tbody>
         @foreach($cheklist as $checklistt)
         <tr>
-            <td>{{$checklistt->id}}</td>
-            <td>{{$checklistt->sucursal}}</td>
-            <td>{{$checklistt->numero_sucursal}}</td>
-            <td>{{$checklistt->gerente_tienda}}</td>
-         
-            <td>
-                <img class="img-thumbnail img-fluid" src="{{asset('storage').'/'.$checklistt->foto_fachada}}" width="120" alt="" srcset="">
+          
+            <td>  
+                <img class="img-thumbnail img-fluid" src="{{asset('storage').'/'.$checklistt->foto_fachada}}" width="120" alt="" srcset="">  
             </td>
-            <td>
+            <td>{{$checklistt->nombre}}</td>
+            <td>{{$checklistt->fecha_registro}}</td>
+            <td>  
+                <a href="{{url('/checklist/'.$checklistt->id.'/edit')}}" class="btn btn-primary">
+                    <i class="bi bi-pencil-fill"></i> 
+                </a>
                 
-            <a href="{{url('/checklist/'.$checklistt->id.'/edit')}}" class="btn btn-warning">Editar</a>    | 
-           
             <form action="{{url('/checklist/'.$checklistt->id)}}" class="d-inline" method="post">
-            @csrf    
-            {{method_field('DELETE')}}
-            <input type="submit" class="btn btn-danger" onClick="return confirm('¿Quieres borrar?')" value="Borrar">
-           
+                @csrf
+                {{method_field('DELETE')}}
+                <button type="submit" class="btn btn-danger" onClick="return confirm('¿Quieres borrar?')">
+                    <i class="bi bi-trash"></i> 
+                </button>
+              
             </form>
-            </td>
+        </td>
         </tr>
         @endforeach
     </tbody>
 </table>
-
 {!!$cheklist->Links()!!}
-
 </div>
-
-@endsection
 </body>
 </html>
+@endsection
+

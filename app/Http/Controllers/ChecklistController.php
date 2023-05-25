@@ -28,9 +28,8 @@ class ChecklistController extends Controller
     public function store(Request $request)
     {
         $campos=[
-            'sucursal'=>'required|string|max:100',
-            'numero_sucursal'=>'required|string|max:100',
-            'gerente_tienda'=>'required|string|max:100',
+            'nombre'=>'required|string|max:100',
+            'fecha_registro'=>'required|string|max:100',
             'foto_fachada'=>'required|max:10000|mimes:jpeg,png,jpg',
         ];
         $mensaje=[
@@ -66,9 +65,8 @@ class ChecklistController extends Controller
     public function update(Request $request, $id)
     {
         $campos=[
-            'sucursal'=>'required|string|max:100',
-            'numero_sucursal'=>'required|string|max:100',
-            'gerente_tienda'=>'required|string|max:100',
+            'nombre'=>'required|string|max:100',
+            'fecha_registro'=>'required|string|max:100',
             'foto_fachada'=>'required|max:10000|mimes:jpeg,png,jpg',
         ];
         $mensaje=[
@@ -90,7 +88,7 @@ class ChecklistController extends Controller
         checklist::where('id','=',$id)->update($datosEquipo);
         $equipo=checklist::FindOrFail($id);
         //return view('empleado.edit',compact('empleado'));
-        return redirect('checklist')->with('mensaje','Equipo modificado');
+        return redirect('checklist')->with('mensaje','Mantenimiento modificado');
     }
     /**
      * Remove the specified resource from storage.
