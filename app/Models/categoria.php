@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class categoria extends Model
 {
     use HasFactory;
+
+    public function sucursales()
+    {
+       return $this->hasMany('App\Models\Sucursal', 'categoria');
+    }
 }
