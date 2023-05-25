@@ -16,6 +16,9 @@ document.addEventListener('DOMContentLoaded', function () {
             right: 'dayGridMonth,timeGridWeek,timeGridDay'
         },
         events: '/actividades/mostrar',
+        selectable:true,
+        selectHelper:true,
+    
 
         dateClick:function(info){
            formulario.reset();
@@ -52,7 +55,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     )
                 )
         }
-
     });
 
     calendar.render();

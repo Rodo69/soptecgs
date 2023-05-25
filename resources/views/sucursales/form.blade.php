@@ -32,7 +32,7 @@
 <div class="form-group">
     <label for="Nombre">Telefono</label>
     <input type="number" class="form-control" name="telefono_ing"
-        value="{{ isset($sucursal->telefono_ing) ? $sucursal->telefono_ing : old('telefono_ing') }}" id="telefono_ing">
+        value="{{ isset($sucursal->telefono_ing) ? $sucursal->telefono_ing : old('telefono_ing') }}" id="telefono_ing"  maxlength="10" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
     <br>
 </div>
 <div class="form-group">
@@ -43,8 +43,8 @@
 </div>
 <div class="form-group">
     <label for="Nombre">Telefono</label>
-    <input type="text" class="form-control" name="telefono_gerente"
-        value="{{ isset($sucursal->telefono_gerente) ? $sucursal->telefono_gerente : old('telefono_gerente') }}" id="telefono_gerente">
+    <input type="number" class="form-control" name="telefono_gerente" 
+        value="{{ isset($sucursal->telefono_gerente) ? $sucursal->telefono_gerente : old('telefono_gerente') }}" id="telefono_gerente"  maxlength="10" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
     <br>
 </div>
 <div class="form-group">
@@ -56,6 +56,7 @@
     <input type="file" class="form-control" Name="imagen" value="{" id="imagen">
     <br>
 </div>
+<h5>:)</h5>
 <div class="form-group">
     <label for="Nombre">Unidad Negocio</label>
     <input type="text" class="form-control" name="banco_azteca"
@@ -64,7 +65,7 @@
 </div>
 <div class="form-group">
     <label for="Nombre">Unidad Negocio</label>
-    <input type="text" class="form-control" name="presta_prenda"
+    <input type="text" class="form-control" name="presta_prenda" placeholder=""
         value="{{ isset($sucursal->presta_prenda) ? $sucursal->presta_prenda : old('presta_prenda') }}" id="presta_prenda">
     <br>
 </div>

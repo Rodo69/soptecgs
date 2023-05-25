@@ -18,7 +18,7 @@
     <title> SUCURSALES </title>
 </head>
 <body>
-    <a href="{{url('sucursales/create')}}" class="btn btn-success">Registrar Nueva Sucursal</a>
+    <a href="{{url('sucursales/create')}}" class="btn btn-outline-primary">Registrar Nueva Sucursal</a>
 <br><br>
 <table class="table table-light">
     <thead class="thead-light">
