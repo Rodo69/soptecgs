@@ -24,22 +24,17 @@ class EquiposbajaController extends Controller
          $equiposbaja = equiposbaja::query()
              ->where('placa', 'LIKE', "%$searchTerm%")
             ->orWhere('serie', 'LIKE', "%$searchTerm%")
-            ->latest('id')
              ->paginate(5);
      
          return view('bajas.index', compact('equiposbaja'))->with('texto', $searchTerm);
      }
      
-
     //public function index(Request $request)
   //  {
       
-
         //$datos['equiposbaja']=equiposbaja::paginate(5);
         //return view('bajas.index',$datos);
    // }
-
-
 
     public function pdf()
     {
@@ -59,8 +54,6 @@ class EquiposbajaController extends Controller
     /**La siguiente funcion direcciona a la pagina principal de los equipos obosoletos,generando una consulta general de
     los equipos, asi como un paginado en caso de que el registro de los equipos obsoletos sea mayor a 5*/
     public function store(Request $request) {
-
-
         $request->validate([
             'serie'=> 'required|max:10',
             'placa'=> 'required|max:10'

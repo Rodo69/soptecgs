@@ -1,4 +1,3 @@
-
 @extends('layouts.appinventario')
 @section('content')
 <head>
@@ -19,16 +18,16 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <a href="{{url('bajas/create')}}" class="btn btn-warning">Agregar</a>
+                <a href="{{url('checklist/create')}}" class="btn btn-warning">Agregar</a>
              
             </div>
             <div class="col">
-                <form action="{{ route('bajas.index') }}" method="get" class="form-inline justify-content-end">
+                <form action="{{ route('checklist.index') }}" method="get" class="form-inline justify-content-end">
                     <div class="input-group">
                         <input type="text" name="busqueda" class="form-control mr-2" placeholder="Buscar placa o serie...">
                         <div class="input-group-append">
                             <button class="btn btn-success" type="submit">Buscar</button>
-                            <a href="{{ route('bajas.index') }}" class="btn btn-secondary ml-2">Cancelar</a>
+                            <a href="{{ route('checklist.index') }}" class="btn btn-secondary ml-2">Cancelar</a>
                         </div>
                     </div>
                 </form>
@@ -38,7 +37,7 @@
     <table class="table" style="text-align:center">
         <thead class="thead-dark">
             <tr>
-            <th>Foto fachada</th>
+            <th>Fachada</th>
             <th>Nombre</th>        
             <th>Fecha de mantenimiento</th>  
             
@@ -66,7 +65,6 @@
                 <button type="submit" class="btn btn-danger" onClick="return confirm('¿Quieres borrar?')">
                     <i class="bi bi-trash"></i> 
                 </button>
-              
             </form>
         </td>
         </tr>
