@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 //use App\Models\equipos;
@@ -8,14 +7,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Barryvdh\DomPDF\Facade\Pdf;
 
-
-
 class EquiposbajaController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-
 
      public function index(Request $request)
      {
@@ -106,8 +102,6 @@ class EquiposbajaController extends Controller
   
     public function update(Request $request, $id)
     {
-
-
         $request->validate([
             'serie'=> 'required|max:10',
             'placa'=> 'required|max:10'

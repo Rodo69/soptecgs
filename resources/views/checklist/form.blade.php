@@ -1,4 +1,3 @@
-
 <h1 class="text-center">{{ $modo }} Mantenimiento</h1>
 @if (count($errors) > 0)
     <div class="alert alert-danger" role="alert">
