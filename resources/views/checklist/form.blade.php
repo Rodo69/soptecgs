@@ -18,10 +18,10 @@
 </div>
 
 <div class="form-group">
-    <label for="fecha_registro">Num. Sucursal</label>
+    <label for="fecha">Fecha registro </label>
     <input type="date" class="form-control" name="fecha_registro"
         value="{{ isset($checklistedit->fecha_registro) ? $checklistedit->fecha_registro : old('fecha_registro') }}"
-        id="numero_sucursal">
+        id="fecha_registro">
     <br>
 </div>
 

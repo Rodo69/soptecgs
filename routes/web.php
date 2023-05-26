@@ -12,7 +12,6 @@ use App\Http\Controllers\EquiposController;
 use App\Http\Controllers\ServidoresController;
 use App\Http\Controllers\SucursalesController;
 use App\Http\Controllers\ChecklistController;
-use App\Http\Controllers\EquiposObsoletosController;
 use App\Models\empleados;
 use GuzzleHttp\Promise\Create;
 use Illuminate\Support\Facades\Auth;

@@ -14,23 +14,10 @@
         </button>  
     </div>
     @endif
-  
     <div class="container">
         <div class="row">
             <div class="col">
                 <a href="{{url('checklist/create')}}" class="btn btn-warning">Agregar</a>
-             
-            </div>
-            <div class="col">
-                <form action="{{ route('checklist.index') }}" method="get" class="form-inline justify-content-end">
-                    <div class="input-group">
-                        <input type="text" name="busqueda" class="form-control mr-2" placeholder="Buscar placa o serie...">
-                        <div class="input-group-append">
-                            <button class="btn btn-success" type="submit">Buscar</button>
-                            <a href="{{ route('checklist.index') }}" class="btn btn-secondary ml-2">Cancelar</a>
-                        </div>
-                    </div>
-                </form>
             </div>
         </div>
 <br>
@@ -54,6 +41,7 @@
             </td>
             <td>{{$checklistt->nombre}}</td>
             <td>{{$checklistt->fecha_registro}}</td>
+           
             <td>  
                 <a href="{{url('/checklist/'.$checklistt->id.'/edit')}}" class="btn btn-primary">
                     <i class="bi bi-pencil-fill"></i> 

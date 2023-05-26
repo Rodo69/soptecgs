@@ -12,6 +12,7 @@ class ChecklistController extends Controller
    
     public function index()
     {
+       
          $datos['cheklist']=checklist::paginate(5);
         return view('checklist.index',$datos);
     }
