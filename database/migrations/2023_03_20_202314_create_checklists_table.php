@@ -16,10 +16,8 @@ return new class extends Migration
             $table->date('fecha_registro');  
             $table->string('foto_fachada');    
             $table->timestamps();
-           
         });
     }
-
 
     public function down(): void
     {

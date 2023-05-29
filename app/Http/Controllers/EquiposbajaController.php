@@ -150,6 +150,6 @@ class EquiposbajaController extends Controller
         if(Storage::delete('public/'.$equipo->foto_obsoleto)){
             equiposbaja::destroy($id);
         }
-        return redirect('bajas')->with('mensaje','Equipo Borrado');
+        return redirect('bajas')->with('mensaje','eliminado');
     }
 }

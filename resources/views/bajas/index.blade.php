@@ -4,16 +4,18 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     
 </head>
-    @if(Session::has('mensaje'))
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        {{Session::get('mensaje')}}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>  
-    </div>
-    @endif
+@if(Session('mensaje') == 'eliminado')
+<script>
+    Swal.fire(
+                  '¡Eliminado!',
+                  'El registro se elimino con éxito',
+                  'success'
+                )
+    </script>
+@endif
   
     <div class="container">
         <div class="row">
@@ -72,10 +74,10 @@
                     <i class="bi bi-pencil-fill"></i> 
                 </a>
                 
-            <form action="{{url('/bajas/'.$equipobaja->id)}}" class="d-inline" method="post">
+            <form action="{{url('/bajas/'.$equipobaja->id)}}" class="d-inline formulario-eliminar" method="post">
                 @csrf
                 {{method_field('DELETE')}}
-                <button type="submit" class="btn btn-danger" onClick="return confirm('¿Quieres borrar?')">
+                <button type="submit" class="btn btn-danger" ">
                     <i class="bi bi-trash"></i> 
                 </button>
                 <a href="{{route('bajas.show', $equipobaja->id)}}" class="btn btn-dark">
@@ -85,6 +87,30 @@
             </td>
         </tr>
     
+        <script>
+
+            $('.formulario-eliminar').submit(function(e){
+                e.preventDefault();
+
+              Swal.fire({
+              title: '¿Estas seguro?',
+              text: "Este registro se eliminará definitivamente",
+              icon: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Si, Eliminar',
+              cancelButtonText:'Cancelar',
+            }).then((result) => {
+              if (result.isConfirmed) {
+                this.submit();
+              }
+            })
+
+        });
+               
+            </script>
+    
         @endforeach
 
     </tbody>
@@ -92,9 +118,12 @@
 {!!$equiposbaja->Links()!!}
 
 </div>
-
-
 </body>
 </html>
 @endsection
+
+
+
+
+
 
