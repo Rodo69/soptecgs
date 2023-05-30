@@ -101,6 +101,6 @@ class ChecklistController extends Controller
         if(Storage::delete('public/'.$checklistedit->foto_fachada)){
             checklist::destroy($id);
         }
-        return redirect('checklist')->with('mensaje','Mantenimiento Borrado');
+        return redirect('checklist')->with('mensaje','eliminado');
     }
 }

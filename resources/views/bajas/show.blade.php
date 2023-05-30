@@ -14,7 +14,7 @@
     <style>
         .card {
             margin: auto;
-            max-width: 18rem;
+            max-width: 25rem;
         }
 
         .card-img-top {

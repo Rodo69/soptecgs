@@ -12,6 +12,7 @@
     <img src="imagenes/head.png" alt="450" width="450">
 </header>
 <h2 class="titulo text-center">Lista de equipos obsoletos</h2>
+<br>
 <table class="table table-striped table-sm text-center">
     <thead class="thead-dark">
         <tr>

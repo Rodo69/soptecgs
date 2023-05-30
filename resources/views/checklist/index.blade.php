@@ -1,19 +1,24 @@
 @extends('layouts.appinventario')
 @section('content')
 <head>
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
-    @if(Session::has('mensaje'))
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        {{Session::get('mensaje')}}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>  
-    </div>
-    @endif
+  @if(Session('mensaje') == 'eliminado')
+
+<script>
+    Swal.fire(
+                  '¡Eliminado!',
+                  'El mantenimiento se elimino con éxito',
+                  'success'
+                )
+    </script>
+@endif
+
+  
+    <h3 class="text-center">Mantenimientos</h3>
+
     <div class="container">
         <div class="row">
             <div class="col">
@@ -21,8 +26,9 @@
             </div>
         </div>
 <br>
-    <table class="table" style="text-align:center">
-        <thead class="thead-dark">
+
+<table class="table table-striped table-sm text-center">
+    <thead class="thead-dark">
             <tr>
             <th>Fachada</th>
             <th>Nombre</th>        
@@ -43,19 +49,41 @@
             <td>{{$checklistt->fecha_registro}}</td>
            
             <td>  
-                <a href="{{url('/checklist/'.$checklistt->id.'/edit')}}" class="btn btn-primary">
+                <a href="{{url('/checklist/'.$checklistt->id.'/edit')}}" class="btn btn-dark">
                     <i class="bi bi-pencil-fill"></i> 
                 </a>
                 
-            <form action="{{url('/checklist/'.$checklistt->id)}}" class="d-inline" method="post">
+            <form action="{{url('/checklist/'.$checklistt->id)}}" class="d-inline  formulario-eliminar" method="post">
                 @csrf
                 {{method_field('DELETE')}}
-                <button type="submit" class="btn btn-danger" onClick="return confirm('¿Quieres borrar?')">
+                <button type="submit" class="btn btn-danger">
                     <i class="bi bi-trash"></i> 
                 </button>
             </form>
         </td>
         </tr>
+        <script>
+
+            $('.formulario-eliminar').submit(function(e){
+                e.preventDefault();
+
+              Swal.fire({
+              title: '¿Estas seguro?',
+              text: "Este mantenimiento se eliminará definitivamente",
+              icon: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Si, Eliminar',
+              cancelButtonText:'Cancelar',
+            }).then((result) => {
+              if (result.isConfirmed) {
+                this.submit();
+              }
+            })
+        }); 
+            </script>
+
         @endforeach
     </tbody>
 </table>

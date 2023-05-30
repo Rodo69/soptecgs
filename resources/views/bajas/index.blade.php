@@ -17,6 +17,7 @@
     </script>
 @endif
   
+<h3 class="text-center">Equipo obsoleto </h3>
     <div class="container">
         <div class="row">
             <div class="col">
@@ -28,18 +29,17 @@
                     <div class="input-group">
                         <input type="text" name="busqueda" class="form-control mr-2" placeholder="Buscar placa o serie...">
                         <div class="input-group-append">
-                            <button class="btn btn-success" type="submit">Buscar</button>
-                            <a href="{{ route('bajas.index') }}" class="btn btn-secondary ml-2">Cancelar</a>
+                            <button class="btn btn-outline-dark" type="submit"><i class="bi bi-search"></i></button>
+                            <a href="{{ route('bajas.index') }}" class="btn btn-outline-danger ml-2"><i class="bi bi-x-circle"></i></a>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
-
 <br>
-    <table class="table" style="text-align:center">
+    <table class="table table-striped table-sm text-center">
+     
         <thead class="thead-dark">
-
             <tr>
             <th>-</th>
             <th>Evidencia</th>        
@@ -69,9 +69,8 @@
             <td>{{$equipobaja->fecha_registro}}</td>
             <td>{{$equipobaja->descripcion}}</td>
             <td> 
-
-                <a href="{{url('/bajas/'.$equipobaja->id.'/edit')}}" class="btn btn-primary">
-                    <i class="bi bi-pencil-fill"></i> 
+                <a href="{{url('/bajas/'.$equipobaja->id.'/edit')}}" class="btn btn-dark">
+                    <i class="bi bi-pencil-square"></i>
                 </a>
                 
             <form action="{{url('/bajas/'.$equipobaja->id)}}" class="d-inline formulario-eliminar" method="post">
@@ -81,12 +80,11 @@
                     <i class="bi bi-trash"></i> 
                 </button>
                 <a href="{{route('bajas.show', $equipobaja->id)}}" class="btn btn-dark">
-                    <i class="bi bi-arrows-angle-expand"></i> 
+                    <i class="bi bi-eye"></i>
                 </a>
             </form>
             </td>
         </tr>
-    
         <script>
 
             $('.formulario-eliminar').submit(function(e){
@@ -106,17 +104,15 @@
                 this.submit();
               }
             })
-
-        });
-               
+        }); 
             </script>
     
         @endforeach
 
     </tbody>
 </table>
+<div class="card-body">
 {!!$equiposbaja->Links()!!}
-
 </div>
 </body>
 </html>

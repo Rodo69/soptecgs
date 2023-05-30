@@ -107,7 +107,6 @@ class EquiposbajaController extends Controller
             'placa'=> 'required|max:10'
         ]);
 
-
         $campos=[
             'tipo'=>'required|string|max:100',
             'modelo'=>'required|string|max:100',   
