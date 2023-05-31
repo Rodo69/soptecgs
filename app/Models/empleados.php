@@ -8,7 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class empleados extends Model
 {
     use HasFactory;
-    
+    protected $fillable = [
+        'nombre_colaborador',
+        'apellido_p',
+        'apellido_m',
+        'telefono',
+        'numero_colaborador',
+        'sucursal_asignada',
+        'unidad_asignada',
+        'puesto',
+    ];
 
     public function sucursales()
     {

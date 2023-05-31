@@ -24,6 +24,7 @@
             </button>
         </div>
     @endif
+    
     <div class="container">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,7 +35,7 @@
 <body>
     <a href="{{ url('empleado/create') }}" class="btn btn-warning">Registrar Nuevo Empleado</a>
     <a href="{{ url('empleados/pdf') }}" class="btn btn-warning">GenerarPDF</a>
-    <br>
+    <br><br>
     <table id="articulos" class="table table-striped" style="width:100%">
         <thead class="thead-light">
             <tr>
