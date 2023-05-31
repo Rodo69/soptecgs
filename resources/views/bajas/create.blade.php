@@ -4,7 +4,7 @@
 <div class="container">
     <form action="{{url('/bajas')}}" method="post" enctype="multipart/form-data">
         @csrf
-        @include('bajas.form',['modo'=>'Crear']);
+        @include('bajas.form',['modo'=>'Crear'])
     </form>
 </div>
 

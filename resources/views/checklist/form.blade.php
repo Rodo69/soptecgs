@@ -37,6 +37,6 @@
     <br>
 </div>
 
-<input class="btn btn-success" type="submit" Value="{{ $modo }} datos">
+<input class="btn btn-success" type="submit" Value="{{ $modo }} ">
 <a class="btn btn-primary" href="{{ url('checklist/') }}">Cancelar</a>
 </div>
