@@ -5,8 +5,22 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    
 </head>
+
+
+@if(Session('mensaje') == 'Equipo Agregado con exito')
+<script>
+    Swal.fire({
+  position: 'top-center',
+  icon: 'success',
+  title: 'Obsoleto registrado',
+  showConfirmButton: false,
+  timer: 2000
+})
+    </script>
+@endif
+
+
 @if(Session('mensaje') == 'eliminado')
 <script>
     Swal.fire(

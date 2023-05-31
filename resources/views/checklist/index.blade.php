@@ -5,6 +5,22 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
+
+
+@if(Session('mensaje') == 'Mantenimiento Agregado con exito')
+
+<script>
+    Swal.fire({
+  position: 'top-center',
+  icon: 'success',
+  title: 'Mantenimiento registrado',
+  showConfirmButton: false,
+  timer: 2000
+})
+    </script>
+@endif
+
+
   @if(Session('mensaje') == 'eliminado')
 
 <script>
@@ -16,7 +32,6 @@
     </script>
 @endif
 
-  
     <h3 class="text-center">Mantenimientos</h3>
 
     <div class="container">
@@ -30,9 +45,10 @@
 <table class="table table-striped table-sm text-center">
     <thead class="thead-dark">
             <tr>
-            <th>Fachada</th>
-            <th>Nombre</th>        
-            <th>Fecha de mantenimiento</th>  
+            <th>Foto fachada</th>
+            <th>Fecha de registro</th>
+            <th>Sucursal</th>        
+          
             
             <th>Acciones</th>   
         </tr>
@@ -45,8 +61,8 @@
             <td>  
                 <img class="img-thumbnail img-fluid" src="{{asset('storage').'/'.$checklistt->foto_fachada}}" width="120" alt="" srcset="">  
             </td>
-            <td>{{$checklistt->nombre}}</td>
             <td>{{$checklistt->fecha_registro}}</td>
+            <td>{{$checklistt->sucursal->nombre}}</td>
            
             <td>  
                 <a href="{{url('/checklist/'.$checklistt->id.'/edit')}}" class="btn btn-dark">

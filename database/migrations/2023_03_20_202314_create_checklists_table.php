@@ -11,11 +11,12 @@ return new class extends Migration
     {
         Schema::create('checklists', function (Blueprint $table) {
             $table->id();
-           // $table->foreign('sucursal_name')->references('id')->on('sucursales')->onDelete('cascade');
-            $table->string('nombre');  
-            $table->date('fecha_registro');  
-            $table->string('foto_fachada');    
+            $table->date('fecha_registro');
+            $table->string('foto_fachada');
+      
+            $table->unsignedBigInteger('sucursal_name');
             $table->timestamps();
+            $table->foreign('sucursal_name')->references('id')->on('sucursales')->onDelete('cascade'); 
         });
     }
 

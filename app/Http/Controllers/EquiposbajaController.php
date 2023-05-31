@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 //use App\Models\equipos;
 use App\Models\equiposbaja;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -44,6 +45,7 @@ class EquiposbajaController extends Controller
      */
     public function create()
     {
+    
         return view('bajas.create');
     }
 
