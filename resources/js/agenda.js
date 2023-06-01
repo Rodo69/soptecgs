@@ -24,6 +24,12 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         events: '/actividades/mostrar',
 
+        eventRender: function(info) {
+            if (info.event.extendedProps.auto && info.event.start < new Date()) {
+              calendar.getEventById(info.event.id).remove(); // Elimina el evento automático pasado
+            }
+          },
+
         dateClick:function(info){
            formulario.reset();
 
@@ -78,8 +84,6 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log(Idtarea);
 
         enviarDatos("/actividades/update/"+Idtarea);
-
-
 
     });
 
