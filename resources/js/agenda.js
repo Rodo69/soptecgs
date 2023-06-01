@@ -8,6 +8,11 @@ document.addEventListener('DOMContentLoaded', function () {
     var Idtarea = "";
 
     var calendar = new FullCalendar.Calendar(calendarEl, {
+
+        validRange: {
+            start: new Date() // La fecha actual
+        },
+
         initialView: 'dayGridMonth',
         locale: "es",
         displayEventTime:false,

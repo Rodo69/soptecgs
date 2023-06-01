@@ -50,13 +50,13 @@
                         <input type="color" class="form-control" name="color" id="color" aria-describedby="helpId" placeholder="">
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group d-none">
                       <label for="start">start</label>
                       <input type="date" class="form-control" name="start" id="start" aria-describedby="helpId" placeholder="">
                     </div>
 
                     <div class="form-group">
-                      <label for="end">end</label>
+                      <label for="end">¿Hasta el dia?</label>
                       <input type="date" class="form-control" name="end" id="end" aria-describedby="helpId" placeholder="">
                     </div>
                 </form>
