@@ -4,11 +4,22 @@
     @extends('layouts.appinventario')
     @section('content')
     @if(Session::has('mensaje'))
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <div class="alert alert-success alert-dismissible fade show" role="alert" id="myAlert">
     {{Session::get('mensaje')}}
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
+        <script>
+          // Obtén la referencia a la alerta
+          var alerta = document.getElementById('myAlert');
+        
+          // Cierra la alerta después de 5 segundos (5000 milisegundos)
+          setTimeout(function() {
+            alerta.classList.add('fade');
+            alerta.classList.add('show');
+            alerta.style.display = 'none';
+          }, 3000);
+        </script>
     </div>
     @endif
     <div class="container">
@@ -38,7 +49,7 @@
     <tbody>
               @foreach ($servidores as $servidor)
         <tr>
-          <td><a href="{{route('servidores.show', $servidor->id)}}">{{$servidor->id}}</td>
+          <td>{{$servidor->id}}</td>
           <td>{{$servidor->nombre}}</td>
           <td>{{$servidor->sucursales->nombre}}</td>
           <td>{{$servidor->ip}}</td>
@@ -57,22 +68,46 @@
             @method('delete')
             <br><button type="submit" class="btn btn-danger" onClick="return confirm('¿Eliminar definitivamente?')">Eliminar</button>
           </form> --}}
-          <form action="{{route('servidores.destroy', $servidor)}}" class="d-inline" method="post">
-            @csrf    
-            {{method_field('DELETE')}}
-            <input type="submit" class="btn btn-danger" onClick="return confirm('¿Quieres borrar?')" value="Borrar">
-            </form> |
-          <!-- Button trigger modal -->
-<button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Editar
-</button>
+          <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#eliminar">
+            Eliminar
+        </button>
+
+<!-- Modal -->
+                <div class="modal fade" id="eliminar" tabindex="-1" aria-labelledby="eliminar" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                        
+                      <h5 class="modal-title" id="eliminar" style="color:brown">¿Seguro que quieres eliminar?</h5>
+                      
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                      <form action="{{route('servidores.destroy', $servidor)}}" class="d-inline" method="post">
+                        @csrf    
+                        {{method_field('DELETE')}}
+                        <button type="submit" class="btn btn-danger">
+                          Eliminar
+                        </button>
+                        </form>
+                    </div>
+                  </div>
+                </div>
+                </div>
+ |
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Editar
+            </button>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">ACTUALIZAR DATOS</h5>
+      <div class="modal-header" style="background: #3393FF">
+        <h5 class="modal-title" id="exampleModalLabel" style="color: white">ACTUALIZAR DATOS</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">

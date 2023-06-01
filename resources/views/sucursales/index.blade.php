@@ -65,6 +65,7 @@
             <td>{{$sucursal->categoria1->nombre}}</td>
             <td>{{$sucursal->categoria2->nombre}}</td>
             <td>
+                
             <a href="{{url('/sucursales/'.$sucursal->id.'/edit')}}"  class="btn btn-warning">Editar</a>    | 
             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#eliminar">
                 Eliminar
@@ -75,16 +76,20 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="eliminar">¿Seguro que quiere eliminar?</h5>
+            
+          <h5 class="modal-title-center" id="eliminar" style="color:brown">¿Seguro que quieres eliminar?</h5>
           
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+        
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
           <form action="{{url('/sucursales/'.$sucursal->id)}}" class="d-inline" method="post">
             @csrf    
             {{method_field('DELETE')}}
-            <input type="submit" class="btn btn-danger">
+            <button type="submit" class="btn btn-danger">
+                Eliminar
+            </button>
             </form>
         </div>
       </div>
