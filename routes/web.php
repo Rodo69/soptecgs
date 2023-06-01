@@ -43,7 +43,7 @@ Route::get('/actividades/create', [ActividadesController::class,'create']);
 Route::get('/actividades/mostrar',[ActividadesController::class,'show']);
 Route::post('/actividades/agregar',[ActividadesController::class,'store']);
 Route::post('/actividades/editar/{id}',[ActividadesController::class,'edit']);
-Route::post('/actividades/actualizar/{actividad}',[ActividadesController::class,'update']);
+Route::post('/actividades/update/{actividad}',[ActividadesController::class,'update']);
 Route::post('/actividades/borrar/{id}',[ActividadesController::class,'destroy']);
 Route::resource('actividades', ActividadesController::class)->middleware('auth');
 
