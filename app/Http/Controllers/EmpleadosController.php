@@ -7,6 +7,8 @@ use App\Models\categoria;
 use App\Models\sucursales;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Http;
+
 
 class EmpleadosController extends Controller
 {
@@ -42,7 +44,8 @@ class EmpleadosController extends Controller
     public function store(Request $request)
     {
         //validar datos
-        
+       
+
         $campos=[
             'nombre_colaborador'=>'required|string|max:100',
             'apellido_p'=>'required|string|max:100',
@@ -52,12 +55,13 @@ class EmpleadosController extends Controller
             'sucursal_asignada'=>'required|string|max:100',
             'unidad_asignada'=>'required|string|max:100',
             'puesto'=>'required|string|max:100',
+            'g-recaptcha-response'=>['required',new \App\Rules\Recaptcha]
         ];
         $mensaje=[
             'required'=>'El campo :attribute es requerido',
         ];
         $this->validate($request,$campos,$mensaje);
-        $datosEmpleado= request()->except('_token');
+        $datosEmpleado= request()->except('_token','g-recaptcha-response');
         Empleados::insert($datosEmpleado);
         return redirect('empleado')->with('mensaje','Empleado Agregado con exito');
     }

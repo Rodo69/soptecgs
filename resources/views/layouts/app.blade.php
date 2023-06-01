@@ -41,6 +41,10 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <script src="https://www.google.com/recaptcha/api.js?render=6LeW6VQmAAAAAHCxwtGmFqEI8zS06AFEqe8hwPxr"></script>
+        <script>
+            
+        </script>
 
         <!-- Styles -->
         @livewireStyles
