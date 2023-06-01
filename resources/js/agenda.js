@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let formulario = document.getElementById("form");
 
     var calendarEl = document.getElementById('agenda');
+    var Idtarea = "";
 
     var calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
@@ -16,9 +17,6 @@ document.addEventListener('DOMContentLoaded', function () {
             right: 'dayGridMonth,timeGridWeek,timeGridDay'
         },
         events: '/actividades/mostrar',
-        selectable:true,
-        selectHelper:true,
-    
 
         dateClick:function(info){
            formulario.reset();
@@ -31,10 +29,12 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         eventClick:function (info) {
 
-            var actividades = info.event;
-            console.log(actividades);
+            const { id } = info.event;
+            Idtarea = id;
+            console.log("este es nuestro id", id)
+           
 
-            axios.post("/actividades/editar/"+info.event.id).
+            axios.post("/actividades/editar/"+id).
             then(
                 (respuesta)=>{
 
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         }
                     )
                 )
-        }
+        },
     });
 
     calendar.render();
@@ -64,11 +64,17 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     document.getElementById("btnEliminar").addEventListener("click", function () {
-        enviarDatos("/actividades/borrar/"+formulario.id.value);
+        enviarDatos("/actividades/borrar/"+Idtarea);
     });
 
     document.getElementById("btnEditar").addEventListener("click", function () {
-        enviarDatos("/actividades/actualizar/"+formulario.id.value);
+
+        console.log(Idtarea);
+
+        enviarDatos("/actividades/update/"+Idtarea);
+
+
+
     });
 
     function enviarDatos(url) {

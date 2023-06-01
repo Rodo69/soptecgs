@@ -30,7 +30,7 @@
                 )
     </script>
 @endif
-  
+<h3 class="text-center">GITHUB </h3>
 <h3 class="text-center">Equipo obsoleto </h3>
     <div class="container">
         <div class="row">

@@ -4,11 +4,22 @@
     @extends('layouts.appinventario')
     @section('content')
     @if(Session::has('mensaje'))
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <div class="alert alert-success alert-dismissible fade show" role="alert" id="myAlert" >
     {{Session::get('mensaje')}}
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+            <span aria-hidden="true"></span>
         </button>
+        <script>
+            // Obtén la referencia a la alerta
+            var alerta = document.getElementById('myAlert');
+          
+            // Cierra la alerta después de 5 segundos (5000 milisegundos)
+            setTimeout(function() {
+              alerta.classList.add('fade');
+              alerta.classList.add('show');
+              alerta.style.display = 'none';
+            }, 3000);
+          </script>
     </div>
     @endif
     <div class="container">
@@ -54,14 +65,32 @@
             <td>{{$sucursal->categoria1->nombre}}</td>
             <td>{{$sucursal->categoria2->nombre}}</td>
             <td>
-            <a href="{{url('/sucursales/'.$sucursal->id.'/edit')}}" class="btn btn-warning">Editar</a>    | 
-
-            <form action="{{url('/sucursales/'.$sucursal->id)}}" class="d-inline" method="post">
+            <a href="{{url('/sucursales/'.$sucursal->id.'/edit')}}"  class="btn btn-warning">Editar</a>    | 
+            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#eliminar">
+                Eliminar
+            </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="eliminar" tabindex="-1" aria-labelledby="eliminar" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="eliminar">¿Seguro que quiere eliminar?</h5>
+          
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <form action="{{url('/sucursales/'.$sucursal->id)}}" class="d-inline" method="post">
             @csrf    
             {{method_field('DELETE')}}
-            <input type="submit" class="btn btn-danger" onClick="return confirm('¿Quieres borrar?')" value="Borrar">
+            <input type="submit" class="btn btn-danger">
             </form>
-            </td>
+        </div>
+      </div>
+    </div>
+  </div>
+
         </tr>
         @endforeach
     </tbody>

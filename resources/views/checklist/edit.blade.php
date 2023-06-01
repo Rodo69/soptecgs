@@ -4,7 +4,7 @@
     <form action="{{ url('/checklist/' . $checklistedit->id) }}" method="post" enctype="multipart/form-data">
         @csrf
         {{ method_field('PATCH') }}
-        @include('checklist.form', ['modo' => 'Editar']);
+        @include('checklist.form', ['modo' => 'Editar'])
     </form>
 </div>
 @endsection

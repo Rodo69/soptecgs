@@ -76,12 +76,24 @@ class ServidoresController extends Controller
      * @param  \App\Models\servidores  $servidores
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
+
+        // $sucursales=sucursales::all();
+        // //return view('servidores.edit', compact('sucursales'));
+        // $servidor=servidores::FindOrFail($id);
+        // return view('servidores.edit',compact('servidor','sucursales'));
+        
+        ////////////
         $sucursales=sucursales::all();
-        //return view('servidores.edit', compact('sucursales'));
+        $DServidor= request()->except(['_token','_method']);
+
+        if($request->hasFile('imagen')){            
+            $DServidor['imagen']=$request->file('imagen')->store('uploads','public');
+        }
+        Sucursales::where('id','=',$id)->update($DServidor);
         $servidor=servidores::FindOrFail($id);
-        return view('servidores.edit',compact('servidor','sucursales'));
+        return view('servidores.edit',compact('servidor','sucursales'))->with('mensaje','Sucursal modificado');
     }
 
     /**
