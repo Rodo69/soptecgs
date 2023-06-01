@@ -8,13 +8,15 @@
         </ul>
     </div>
 @endif
-
+ 
 <div class="form-group">
-    <label for="nombre">Nombre Sucursal</label>
-    <input type="text" class="form-control" name="nombre"
-        value="{{ isset($checklistedit->nombre) ? $checklistedit->nombre : old('nombre') }}"
-        id="numero_sucursal">
-    <br>
+    <label for="Nombre">Nombre</label>
+    <select name="sucursal_name" id="sucursal_name" class="form-select">
+        <option selected>Selecciona la sucursal </option>
+        @foreach ($sucursales as $sucursal)
+        <option value="{{ $sucursal->id}}">{{$sucursal->nombre }}</option>
+        @endforeach
+    </select>
 </div>
 
 <div class="form-group">
@@ -35,6 +37,6 @@
     <br>
 </div>
 
-<input class="btn btn-success" type="submit" Value="{{ $modo }} datos">
+<input class="btn btn-success" type="submit" Value="{{ $modo }} ">
 <a class="btn btn-primary" href="{{ url('checklist/') }}">Cancelar</a>
 </div>

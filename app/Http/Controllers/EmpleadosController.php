@@ -18,7 +18,7 @@ class EmpleadosController extends Controller
         $datos['empleados']=Empleados::paginate(5);
         return view('empleado.index',$datos);
     }
-    
+
     public function pdf()
     {
         $empleados=Empleados::paginate();
@@ -26,7 +26,6 @@ class EmpleadosController extends Controller
         $pdf=PDF::loadView('empleado.pdf',['empleados'=>$empleados]);  
         return $pdf->setPaper('a4','landscape')->stream();
     }
-
     /**
      * Show the form for creating a new resource.
      */

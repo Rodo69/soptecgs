@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\checklist;
+use App\Models\sucursales;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class ChecklistController extends Controller
 {
     
-   
     public function index()
     {
        
@@ -21,15 +21,14 @@ class ChecklistController extends Controller
      */
     public function create()
     {
-        return view('checklist.create');
+        $sucursales = sucursales::all();
+        return view('checklist.create',compact('sucursales'));
     }
   
-
-   
     public function store(Request $request)
     {
         $campos=[
-            'nombre'=>'required|string|max:100',
+            'sucursal_name'=>'required|string|max:100',
             'fecha_registro'=>'required|string|max:100',
             'foto_fachada'=>'required|max:10000|mimes:jpeg,png,jpg',
         ];
@@ -43,7 +42,7 @@ class ChecklistController extends Controller
             $datosChecklist['foto_fachada']=$request->file('foto_fachada')->store('uploads','public');
         }
         checklist::insert($datosChecklist);
-        return redirect('checklist')->with('mensaje','Equipo Agregado con exito');
+        return redirect('checklist')->with('mensaje','Mantenimiento Agregado con exito');
     }
     /**
      * Display the specified resource.
@@ -57,8 +56,10 @@ class ChecklistController extends Controller
      */
     public function edit($id)
     {
+      
         $checklistedit=checklist::FindOrFail($id);
-        return view('checklist.edit',compact('checklistedit'));
+        $sucursales = sucursales::all();
+        return view('checklist.edit',compact('checklistedit','sucursales'));
     }
     /**
      * Update the specified resource in storage.
@@ -66,7 +67,7 @@ class ChecklistController extends Controller
     public function update(Request $request, $id)
     {
         $campos=[
-            'nombre'=>'required|string|max:100',
+            'sucursal_name'=>'required|string|max:100',
             'fecha_registro'=>'required|string|max:100',
             'foto_fachada'=>'required|max:10000|mimes:jpeg,png,jpg',
         ];
@@ -101,6 +102,6 @@ class ChecklistController extends Controller
         if(Storage::delete('public/'.$checklistedit->foto_fachada)){
             checklist::destroy($id);
         }
-        return redirect('checklist')->with('mensaje','Mantenimiento Borrado');
+        return redirect('checklist')->with('mensaje','eliminado');
     }
 }

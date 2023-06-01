@@ -26,6 +26,5 @@ class sucursales extends Model
      {
         return $this->hasMany('App\Models\Servidor', 'sucursal');
      }
-
-     
+ 
 }

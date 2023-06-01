@@ -10,29 +10,30 @@
     </div>
 @endif
 
+
 <div class="form-group">
-    <label for="Nombre">Tipo</label>
+    <label for="tipo">Tipo</label>
     <input type="text" class="form-control" name="tipo"
         value="{{ isset($equipo->tipo) ? $equipo->tipo : old('tipo') }}" id="tipo">
     <br>
 </div>
 
 <div class="form-group">
-    <label for="Nombre">Modelo</label>
+    <label for="modelo">Modelo</label>
     <input type="text" class="form-control" name="modelo"
         value="{{ isset($equipo->modelo) ? $equipo->modelo : old('modelo') }}" id="modelo">
     <br>
 </div>
 
 <div class="form-group">
-    <label for="Nombre">Marca</label>
+    <label for="marca">Marca</label>
     <input type="text" class="form-control" name="marca"
         value="{{ isset($equipo->marca) ? $equipo->marca : old('marca') }}" id="marca">
     <br>
 </div>
 
 <div class="form-group">
-    <label for="Nombre">Placa</label>
+    <label for="placa">Placa</label>
     <input type="text" class="form-control" name="placa"
         value="{{ isset($equipo->placa) ? $equipo->placa : old('placa') }}"
         id="placa">
@@ -40,7 +41,7 @@
 </div>
 
 <div class="form-group">
-    <label for="Nombre">Serie</label>
+    <label for="serie">Serie</label>
     <input type="text" class="form-control" name="serie"
         value="{{ isset($equipo->serie) ? $equipo->serie : old('serie') }}"
         id="serie">
@@ -55,7 +56,7 @@
 </div>
 
 <div class="form-group">
-    <label for="Nombre">Descripción </label>
+    <label for="descripción">Descripción </label>
     <input type="text" class="form-control" name="descripcion"
         value="{{ isset($equipo->descripcion) ? $equipo->descripcion : old('descripcion') }}"
         id="descripcion">
@@ -72,10 +73,11 @@
     <br>
 </div>
 
-<input class="btn btn-warning" type="submit" Value="{{ $modo }} ">
+<input class="btn btn-success" type="submit" Value="{{ $modo }} ">
 
 <a class="btn btn-danger" href="{{ url('/bajas') }}">Cancelar</a>
 
 </div>
+
 
 

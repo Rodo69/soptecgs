@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 //use App\Models\equipos;
 use App\Models\equiposbaja;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -44,6 +45,7 @@ class EquiposbajaController extends Controller
      */
     public function create()
     {
+    
         return view('bajas.create');
     }
 
@@ -107,7 +109,6 @@ class EquiposbajaController extends Controller
             'placa'=> 'required|max:10'
         ]);
 
-
         $campos=[
             'tipo'=>'required|string|max:100',
             'modelo'=>'required|string|max:100',   
@@ -150,6 +151,6 @@ class EquiposbajaController extends Controller
         if(Storage::delete('public/'.$equipo->foto_obsoleto)){
             equiposbaja::destroy($id);
         }
-        return redirect('bajas')->with('mensaje','Equipo Borrado');
+        return redirect('bajas')->with('mensaje','eliminado');
     }
 }
