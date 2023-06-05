@@ -24,7 +24,7 @@
             </button>
         </div>
     @endif
-    
+
     <div class="container">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -69,7 +69,8 @@
                         <form action="{{ url('/empleado/' . $empleado->id) }}" class="d-inline" method="post">
                             @csrf
                             {{ method_field('DELETE') }}
-                            <input type="submit" class="btn btn-danger" onClick="return confirm('¿Quieres borrar?')"value="Borrar">
+                            <input type="submit" class="btn btn-danger"
+                                onClick="return confirm('¿Quieres borrar?')"value="Borrar">
                         </form>
                     </td>
                 </tr>

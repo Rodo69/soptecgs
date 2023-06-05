@@ -27,7 +27,7 @@ class Recaptcha implements ValidationRule
         if($response->success && $response->score >0.7){
             return true;
         }else{
-            return false;
+            return 'La valdación de recaptcha a fallado';
         }
     }
     

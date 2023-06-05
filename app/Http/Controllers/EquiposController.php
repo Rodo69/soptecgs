@@ -71,19 +71,20 @@ class EquiposController extends Controller
         $campos=[
             'tipo'=>'required|string|max:100',
             'marca'=>'required|string|max:100',
-            'modelo'=>'required|string|max:100',
-            'serie'=>'required|string|max:100',
-            'placa'=>'required|string|max:100',
+            'modelo'=>'required|string|min:6|max:100|unique:equipos,nombre_equipo',
+            'serie'=>'required|string|min:6|max:6|unique:equipos,serie',
+            'placa'=>'required|string|min:8|max:8|unique:equipos,placa',
             'empleado_asig'=>'required|string|max:100',
             'sucursal_asig'=>'required|string|max:100',
             'unidad_asig'=>'required|string|max:100',
             'nombre_equipo'=>'required|string|max:100',
+            'g-recaptcha-response'=>['required',new \App\Rules\Recaptcha]
         ];
         $mensaje=[
             'required'=>'El campo :attribute es requerido',
         ];
         $this->validate($request,$campos,$mensaje);
-        $datosEquipo= request()->except('_token');
+        $datosEquipo= request()->except('_token','g-recaptcha-response');
 //        $equipo=Equipos::FindOrFail($id);
         $equipo = Equipos::create($datosEquipo);
         //$equipo = Equipos::where('id','=',$id)->insert($datosEquipo);
@@ -127,12 +128,13 @@ class EquiposController extends Controller
             'tipo'=>'required|string|max:100',
             'marca'=>'required|string|max:100',
             'modelo'=>'required|string|max:100',
-            'serie'=>'required|string|max:100',
-            'placa'=>'required|string|max:100',
+            'serie'=>'required|string|max:100|unique:equipos,serie',
+            'placa'=>'required|string|max:100|unique:equipos,placa',
             'empleado_asig'=>'required|string|max:100',
             'sucursal_asig'=>'required|string|max:100',
             'unidad_asig'=>'required|string|max:100',
-            'nombre_equipo'=>'required|string|max:100',
+            'nombre_equipo'=>'required|string|max:100|unique:equipos,nombre_equipo',
+            'g-recaptcha-response'=>['required',new \App\Rules\Recaptcha]
             
         ];
         $mensaje=[
@@ -144,7 +146,7 @@ class EquiposController extends Controller
             $mensaje=['foto_equipo.required'=>'La foto es requerida'];
         }
 
-        $datosEquipo= request()->except(['_token','_method']);
+        $datosEquipo= request()->except(['_token','_method','g-recaptcha-response']);
 
         if($request->hasFile('foto_equipo')){
             $equipo=Equipos::FindOrFail($id);

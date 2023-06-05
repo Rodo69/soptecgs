@@ -52,23 +52,7 @@
 @stop
 
 @section('adminlte_js')
-    <script src="https://www.google.com/recaptcha/api.js?render=6LeW6VQmAAAAAHCxwtGmFqEI8zS06AFEqe8hwPxr"></script>
-            <script>
-                document.addEventListener('submit',function(e){
-                    e.preventDefault();
-                    grecaptcha.ready(function() {
-                        grecaptcha.execute('6LeW6VQmAAAAAHCxwtGmFqEI8zS06AFEqe8hwPxr', {action: 'submit'}).then(function(token) {
-                            let form = e.target;
-                            let input = document.createElement('input');
-                            input.type='hidden';
-                            input.name='g-recaptcha-response';
-                            input.value=token;
-                            form.appendChild(input);
-                            form.submit();
-          });
-        });
-                });
-            </script>
+    
     @stack('js')
     @yield('js')
 @stop
