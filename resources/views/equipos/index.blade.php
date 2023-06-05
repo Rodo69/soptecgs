@@ -69,7 +69,7 @@
                             <form action="{{ url('/equipos/' . $equipo->id) }}" class="d-inline" method="post">
                                 @csrf
                                 {{ method_field('DELETE') }}
-                                <input type="submit" class="btn btn-danger" onClick="return confirm('¿Quieres borrar?')" value="Borrar">
+                                <input type="submit" class="btn btn-danger" onClick="return confirm('¿Quieres borrar?')" value="Retirar">
                             </form>
                         </td>
                     </tr>

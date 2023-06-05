@@ -41,6 +41,7 @@
    
     <div class="form-group">
         <label for="Nombre">Sucursal Asignada</label>
+        <label for="Nombre">[{{ isset($empleado->sucursales->nombre) ? $empleado->sucursales->nombre : old('nombre') }}]</label>
         <select name="sucursal_asignada" id="sucursal_asignada" class="form-control">
             @foreach ($sucursales as $sucursal)
             <option id="sucursal_asignada" value="{{ $sucursal->id}}">{{$sucursal->nombre}}</option>
@@ -49,6 +50,7 @@
    
         <div class="form-group">
             <label for="Nombre">Unidad Asignada</label>
+            <label for="Nombre">[{{ isset($empleado->categoria->nombre) ? $empleado->categoria->nombre : old('nombre') }}]</label>
             <select name="unidad_asignada" id="unidad_asignada" class="form-control">
                 @foreach ($categorias as $categoria)
                 <option id="unidad_asignada" value="{{ $categoria->id}}">{{$categoria->nombre}}</option>

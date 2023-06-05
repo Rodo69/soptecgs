@@ -75,5 +75,6 @@
         @livewireScripts
         
         @vite(['resources/sass/app.scss', 'resources/js/agenda.js'])
+        
     </body>
 </html>

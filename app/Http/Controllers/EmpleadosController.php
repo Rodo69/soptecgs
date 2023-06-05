@@ -17,7 +17,7 @@ class EmpleadosController extends Controller
      */
     public function index()
     {
-        $datos['empleados']=Empleados::paginate(5);
+        $datos['empleados']=Empleados::all();
         return view('empleado.index',$datos);
     }
 
@@ -45,13 +45,12 @@ class EmpleadosController extends Controller
     {
         //validar datos
        
-
         $campos=[
             'nombre_colaborador'=>'required|string|max:100',
             'apellido_p'=>'required|string|max:100',
             'apellido_m'=>'required|string|max:100',
             'telefono'=>'required|string|max:100',
-            'numero_colaborador'=>'required|string|max:100',
+            'numero_colaborador'=>'required|string|max:100|unique:empleados,numero_colaborador',
             'sucursal_asignada'=>'required|string|max:100',
             'unidad_asignada'=>'required|string|max:100',
             'puesto'=>'required|string|max:100',
@@ -95,17 +94,18 @@ class EmpleadosController extends Controller
             'nombre_colaborador'=>'required|string|max:100',
             'apellido_p'=>'required|string|max:100',
             'apellido_m'=>'required|string|max:100',
-            'telefono'=>'required|string|max:100',
-            'numero_colaborador'=>'required|string|max:100',
+            'telefono'=>'required|string|min:10|max:10',
+            'numero_colaborador'=>'required|string|min:6|max:6|unique:empleados,numero_colaborador',
             'sucursal_asignada'=>'required|string|max:100',
             'unidad_asignada'=>'required|string|max:100',
             'puesto'=>'required|string|max:100',
+            'g-recaptcha-response'=>['required',new \App\Rules\Recaptcha]
         ];
         $mensaje=[
             'required'=>'El campo :attribute es requerido',
         ];
         $this->validate($request,$campos,$mensaje);
-        $datosEmpleado= request()->except(['_token','_method']);
+        $datosEmpleado= request()->except(['_token','_method','g-recaptcha-response']);
         Empleados::where('id','=',$id)->update($datosEmpleado);
         $empleado=Empleados::FindOrFail($id);
         return redirect('empleado')->with('mensaje','Empleado modificado');
