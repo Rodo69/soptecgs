@@ -22,4 +22,9 @@ class actividades extends Model
     'start',
     'end',
 ]; 
+
+    public function sucursales()
+    {
+    return $this->belongsTo(sucursales::class, 'sucursalasig');
+    }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\actividades;
+use App\Models\sucursales;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -13,7 +14,8 @@ class ActividadesController extends Controller
      */
     public function index()
     {
-        return view('actividades.index');
+        $sucursales=sucursales::all();
+        return view('actividades.index', compact('sucursales'));
     }
 
     /**

@@ -59,11 +59,20 @@
                       <label for="end">¿Hasta el dia?</label>
                       <input type="date" class="form-control" name="end" id="end" aria-describedby="helpId" placeholder="">
                     </div>
+                    
+                    <div class="form-group">
+                        <label for="end">Sucursal asignada</label>
+                        <select name="sucursalasig" class="form-select" id="inputGroupSelect01">
+                            @foreach ($sucursales as $sucursal)
+                            <option value="{{old('id',$sucursal->id )}}" @selected(old('nombre', $sucursal->nombre) == $sucursal)> {{$sucursal->nombre}} </option>
+                            @endforeach
+                        </select>                      
+                    </div>
+
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" id="btnEliminar">Eliminar</button>
-                <button type="button" class="btn btn-warning" id="btnEditar">Editar</button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnCancelar">Cancelar</button>
                 <button type="button" class="btn btn-success" id="btnGuardar">Guardar</button>
             </div>
